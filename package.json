@@ -4,6 +4,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "lint": "next lint && yarn prettier",
+    "prettier": "prettier --write \"**/*.(ts|tsx)\"",
     "typecheck": "tsc"
   },
   "dependencies": {
