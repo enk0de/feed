@@ -1607,7 +1607,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:2.3.1":
+"classnames@npm:^2.3.1":
   version: 2.3.1
   resolution: "classnames@npm:2.3.1"
   checksum: 14db8889d56c267a591f08b0834989fe542d47fac659af5a539e110cc4266694e8de86e4e3bbd271157dbd831361310a8293e0167141e80b0f03a0f175c80960
@@ -5546,7 +5546,7 @@ __metadata:
     "@types/react-dom": ^17.0.5
     "@yarnpkg/pnpify": ^3.1.1-rc.2
     autoprefixer: ^10.2.5
-    classnames: 2.3.1
+    classnames: ^2.3.1
     date-fns: 2.21.3
     eslint: <8.0.0
     eslint-config-next: 12.0.3
