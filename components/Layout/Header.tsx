@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import Image from 'next/image';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode } from 'react';
 import useScrolled from '../../hooks/useScrolled';
 
 export default function Header() {
