@@ -1,25 +1,10 @@
 import classNames from 'classnames';
 import Image from 'next/image';
 import { ReactNode, useEffect, useState } from 'react';
+import useScrolled from '../../hooks/useScrolled';
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const listener = () => {
-      const scrollY = window.scrollY;
-
-      window.requestAnimationFrame(() => {
-        setScrolled(scrollY > 0);
-      });
-      // setScrolled(true);
-    };
-    window.addEventListener('scroll', listener);
-
-    return () => {
-      window.removeEventListener('scroll', listener);
-    };
-  }, []);
+  const scrolled = useScrolled();
 
   return (
     <header
