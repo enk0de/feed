@@ -1,7 +1,7 @@
 module.exports = {
   mode: 'jit',
   purge: ['./pages/**/*.{js,ts,jsx,tsx,mdx}', './components/**/*.{js,ts,jsx,tsx,mdx}'],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     colors: require('./constants/tailwindColors'),
     fontSize: {
