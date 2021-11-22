@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 import useScrolled from '../../hooks/useScrolled';
+import ThemeToggler from './ThemeToggler';
 
 export default function Header() {
   const scrolled = useScrolled();
@@ -14,15 +15,13 @@ export default function Header() {
       ])}
     >
       <div className="flex items-center space-x-[25px]">
-        <Image src="/assets/logo.svg" width="152" height="27"></Image>
+        <Image src="/assets/logo.svg" width="152" height="27" alt="hoondevfeed"></Image>
         <ul className="flex space-x-[25px] text-[16px]">
           <HeaderNavItem>resume</HeaderNavItem>
           <HeaderNavItem>github</HeaderNavItem>
         </ul>
       </div>
-      <button className="relative w-[24px] h-[24px]">
-        <Image src="/assets/sun.svg" layout="fill" />
-      </button>
+      <ThemeToggler />
     </header>
   );
 }
