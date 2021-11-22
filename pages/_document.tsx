@@ -1,10 +1,11 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-
+import Document, { Head, Html, Main, NextScript } from 'next/document';
+import { getCssText } from '../stitches.config';
 export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="ko">
         <Head>
+          <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
           <link rel="icon" href="/favicon.ico" />
           <link
             rel="stylesheet"

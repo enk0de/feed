@@ -1,35 +1,68 @@
-import classNames from 'classnames';
 import Image from 'next/image';
 import { ReactNode } from 'react';
 import useScrolled from '../../hooks/useScrolled';
+import { styled } from '../../stitches.config';
 import ThemeToggler from './ThemeToggler';
 
 export default function Header() {
   const scrolled = useScrolled();
 
   return (
-    <header
-      className={classNames([
-        scrolled && 'border-b border-black border-opacity-5',
-        'fixed top-0 left-0 right-0 flex justify-between items-center px-[40px] py-[20px] bg-white backdrop-blur-[40px]'
-      ])}
-    >
-      <div className="flex items-center space-x-[25px]">
-        <Image src="/assets/logo.svg" width="152" height="27" alt="hoondevfeed"></Image>
-        <ul className="flex space-x-[25px] text-[16px]">
+    <HeaderContainer scrolled={scrolled}>
+      <HeaderLeftArea>
+        <Image
+          src="/assets/logo.svg"
+          width="152"
+          height="27"
+          alt="hoondevfeed"
+          priority={true}
+        ></Image>
+        <HeaderNavWrapper>
           <HeaderNavItem>resume</HeaderNavItem>
           <HeaderNavItem>github</HeaderNavItem>
-        </ul>
-      </div>
+        </HeaderNavWrapper>
+      </HeaderLeftArea>
       <ThemeToggler />
-    </header>
+    </HeaderContainer>
   );
 }
 
-function HeaderNavItem({ children }: { children: ReactNode }) {
-  return (
-    <li className="text-dark-2 font-msa">
-      <a>{children}</a>
-    </li>
-  );
-}
+const HeaderContainer = styled('header', {
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  right: 0,
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  padding: '20px 40px',
+  background: 'white',
+  backdropFilter: 'blur(40px)',
+  variants: {
+    scrolled: {
+      true: {
+        boxShadow: '0px 1px 0px rgba(0, 0, 0, 0.05)'
+      }
+    }
+  },
+  transitionProperty: 'box-shadow',
+  transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+  transitionDuration: '400ms'
+});
+
+const HeaderLeftArea = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  spaceX: '25px'
+});
+
+const HeaderNavWrapper = styled('ul', {
+  display: 'flex',
+  spaceX: '25px',
+  fontSize: 16
+});
+
+const HeaderNavItem = styled('li', {
+  color: '$dark2',
+  fontFamily: '$msa'
+});

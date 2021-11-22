@@ -9,7 +9,9 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "classnames": "^2.3.1",
+    "@splidejs/react-splide": "^0.6.14",
+    "@splidejs/splide": "^3.6.0",
+    "@stitches/react": "^1.2.5",
     "date-fns": "2.21.3",
     "gray-matter": "4.0.3",
     "next": "latest",
@@ -26,13 +28,10 @@
     "@types/react": "^17.0.6",
     "@types/react-dom": "^17.0.5",
     "@yarnpkg/pnpify": "^3.1.1-rc.2",
-    "autoprefixer": "^10.2.5",
     "eslint": "<8.0.0",
     "eslint-config-next": "12.0.3",
     "eslint-config-prettier": "^8.3.0",
-    "postcss": "^8.3.0",
-    "prettier": "^2.4.1",
-    "tailwindcss": "^2.1.2"
+    "prettier": "^2.4.1"
   },
-  "packageManager": "yarn@3.1.0"
+  "packageManager": "yarn@3.2.0-rc.5"
 }
