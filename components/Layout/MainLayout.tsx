@@ -1,11 +1,16 @@
+import { ReactNode } from 'react';
 import { styled } from '../../stitches.config';
 import Header from './Header';
 
-export default function MainLayout() {
+interface IMainLayoutProps {
+  children?: ReactNode;
+}
+
+export default function MainLayout({ children }: IMainLayoutProps) {
   return (
     <>
       <Header />
-      <ContentsArea></ContentsArea>
+      <ContentsArea>{children}</ContentsArea>
     </>
   );
 }
