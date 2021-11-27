@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { styled } from '../../stitches.config';
+import Footer from './Footer';
 import Header from './Header';
 
 interface IMainLayoutProps {
@@ -11,6 +12,7 @@ export default function MainLayout({ children }: IMainLayoutProps) {
     <>
       <Header />
       <ContentsArea>{children}</ContentsArea>
+      <Footer />
     </>
   );
 }
