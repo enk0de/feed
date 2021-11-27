@@ -141,5 +141,12 @@ export const globalStyles = globalCss({
   table: {
     borderCollapse: 'collapse',
     borderSpacing: 0
+  },
+  a: {
+    color: 'inherit',
+    textDecoration: 'none',
+    '&:hover': {
+      color: 'inherit'
+    }
   }
 });
