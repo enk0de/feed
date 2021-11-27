@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ReactNode } from 'react';
+import Link from 'next/link';
 import useScrolled from '../../hooks/useScrolled';
 import { styled } from '../../stitches.config';
 import ThemeToggler from './ThemeToggler';
@@ -18,8 +18,12 @@ export default function Header() {
           priority={true}
         ></Image>
         <HeaderNavWrapper>
-          <HeaderNavItem>resume</HeaderNavItem>
-          <HeaderNavItem>github</HeaderNavItem>
+          <HeaderNavItem>
+            <Link href="https://www.hoondev.com/">resume</Link>
+          </HeaderNavItem>
+          <HeaderNavItem>
+            <Link href="https://github.com/hoondeveloper">github</Link>
+          </HeaderNavItem>
         </HeaderNavWrapper>
       </HeaderLeftArea>
       <ThemeToggler />
@@ -64,5 +68,8 @@ const HeaderNavWrapper = styled('ul', {
 
 const HeaderNavItem = styled('li', {
   color: '$dark2',
-  fontFamily: '$msa'
+  fontFamily: '$msa',
+  '&:hover': {
+    color: '$dark3'
+  }
 });
