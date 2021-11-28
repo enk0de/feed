@@ -13,7 +13,9 @@ export default function SpecialArticleTitle({ children }: ISpecialArticleTitlePr
         type="5"
         css={{
           color: 'white',
-          textShadow: '0px 0px 2px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.32)'
+          textShadow:
+            '0px 0px 2px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.32)',
+          whiteSpace: 'pre-wrap'
         }}
       >
         {children}
