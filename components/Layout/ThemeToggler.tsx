@@ -30,7 +30,13 @@ export default function ThemeToggler() {
     <ThemeTogglerContainer
       onClick={() => setTheme(resolvedTheme === 'light' ? 'dark' : 'light')}
     >
-      <Image src={src} layout="fill" />
+      <Image
+        src={src}
+        layout="fill"
+        alt={
+          resolvedTheme === 'light' ? 'Turn on the dark mode' : 'Turn on the light mode'
+        }
+      />
     </ThemeTogglerContainer>
   );
 }
