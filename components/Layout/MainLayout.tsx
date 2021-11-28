@@ -11,15 +11,20 @@ export default function MainLayout({ children }: IMainLayoutProps) {
   return (
     <>
       <Header />
-      <ContentsArea>{children}</ContentsArea>
+      <MainLayoutContentsWrapper>{children}</MainLayoutContentsWrapper>
       <Footer />
     </>
   );
 }
 
-const ContentsArea = styled('main', {
-  maxWidth: 1000,
-  width: '100%',
-  margin: '0 auto',
+const MainLayoutContentsWrapper = styled('main', {
   marginTop: 80
 });
+
+const Contents = styled('div', {
+  maxWidth: 1000,
+  width: '100%',
+  margin: '0 auto'
+});
+
+MainLayout.Contents = Contents;
