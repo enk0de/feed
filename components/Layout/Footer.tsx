@@ -15,5 +15,6 @@ export default function Footer() {
 const FooterContainer = styled('footer', {
   width: '100%',
   padding: '40px 50px',
-  backgroundColor: '$light3'
+  backgroundColor: '$light3',
+  boxSizing: 'border-box'
 });
