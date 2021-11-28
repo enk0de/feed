@@ -7,7 +7,9 @@ export default function SpecialArticleImage({
 }: { alt: string } & ImageProps) {
   return (
     <SpecialArticleImageContainer>
-      <Image {...rest} alt={alt} layout="fill" objectFit="cover" />
+      <figure style={{ position: 'relative', width: '100%', height: '100%' }}>
+        <Image {...rest} alt={alt} layout="fill" objectFit="cover" priority />
+      </figure>
     </SpecialArticleImageContainer>
   );
 }
