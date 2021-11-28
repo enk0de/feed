@@ -22,9 +22,11 @@ const MainLayoutContentsWrapper = styled('main', {
 });
 
 const Contents = styled('div', {
-  maxWidth: 1000,
+  maxWidth: 1140,
   width: '100%',
-  margin: '0 auto'
+  padding: '12px 40px',
+  margin: '0 auto',
+  boxSizing: 'border-box'
 });
 
 MainLayout.Contents = Contents;
