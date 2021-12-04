@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { styled } from '../../stitches.config';
-import { TypoHeading } from '../Common/Typography';
+import { TypoHeadingH5 } from '../Common/Typography';
 
 interface ISpecialArticleTitleProps {
   children?: ReactNode;
@@ -9,8 +9,7 @@ interface ISpecialArticleTitleProps {
 export default function SpecialArticleTitle({ children }: ISpecialArticleTitleProps) {
   return (
     <SpecialArticleTitleContainer>
-      <TypoHeading
-        type="5"
+      <TypoHeadingH5
         css={{
           color: 'white',
           textShadow:
@@ -19,7 +18,7 @@ export default function SpecialArticleTitle({ children }: ISpecialArticleTitlePr
         }}
       >
         {children}
-      </TypoHeading>
+      </TypoHeadingH5>
     </SpecialArticleTitleContainer>
   );
 }

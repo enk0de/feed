@@ -1,35 +1,39 @@
 import { styled } from '../../stitches.config';
 
-export const TypoHeading = styled('h1', {
+export const TypoHeadingH1 = styled('h1', {
   fontWeight: 'bold',
-  variants: {
-    type: {
-      1: {
-        fontSize: 40,
-        lineHeight: '54px'
-      },
-      2: {
-        fontSize: 32,
-        lineHeight: '44px'
-      },
-      3: {
-        fontSize: 28,
-        lineHeight: '38px'
-      },
-      4: {
-        fontSize: 24,
-        lineHeight: '32px'
-      },
-      5: {
-        fontSize: 20,
-        lineHeight: '28px'
-      },
-      6: {
-        fontSize: 16,
-        lineHeight: '22px'
-      }
-    }
-  }
+  fontSize: 40,
+  lineHeight: '54px'
+});
+
+export const TypoHeadingH2 = styled('h2', {
+  fontWeight: 'bold',
+  fontSize: 32,
+  lineHeight: '44px'
+});
+
+export const TypoHeadingH3 = styled('h3', {
+  fontWeight: 'bold',
+  fontSize: 28,
+  lineHeight: '38px'
+});
+
+export const TypoHeadingH4 = styled('h4', {
+  fontWeight: 'bold',
+  fontSize: 24,
+  lineHeight: '32px'
+});
+
+export const TypoHeadingH5 = styled('h5', {
+  fontWeight: 'bold',
+  fontSize: 20,
+  lineHeight: '28px'
+});
+
+export const TypoHeadingH6 = styled('h6', {
+  fontWeight: 'bold',
+  fontSize: 16,
+  lineHeight: '22px'
 });
 
 export const TypoLead = styled('p', {
