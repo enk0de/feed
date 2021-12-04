@@ -35,8 +35,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {
           "packageLocation": "./",
           "packageDependencies": [
-            ["@splidejs/react-splide", "npm:0.6.14"],
-            ["@splidejs/splide", "npm:3.6.0"],
             ["@stitches/react", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.2.5"],
             ["@types/jest", "npm:26.0.24"],
             ["@types/node", "npm:15.14.9"],
@@ -553,25 +551,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@sindresorhus-is-npm-4.2.0-87ea1e5c27-59040dfb75.zip/node_modules/@sindresorhus/is/",
           "packageDependencies": [
             ["@sindresorhus/is", "npm:4.2.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["@splidejs/react-splide", [
-        ["npm:0.6.14", {
-          "packageLocation": "./.yarn/cache/@splidejs-react-splide-npm-0.6.14-e120bff6d0-f53b8fd0e4.zip/node_modules/@splidejs/react-splide/",
-          "packageDependencies": [
-            ["@splidejs/react-splide", "npm:0.6.14"],
-            ["@splidejs/splide", "npm:3.6.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["@splidejs/splide", [
-        ["npm:3.6.0", {
-          "packageLocation": "./.yarn/cache/@splidejs-splide-npm-3.6.0-b108a35ef3-e91edc62f2.zip/node_modules/@splidejs/splide/",
-          "packageDependencies": [
-            ["@splidejs/splide", "npm:3.6.0"]
           ],
           "linkType": "HARD",
         }]
@@ -5960,8 +5939,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["root-workspace-0b6124", "workspace:."],
-            ["@splidejs/react-splide", "npm:0.6.14"],
-            ["@splidejs/splide", "npm:3.6.0"],
             ["@stitches/react", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.2.5"],
             ["@types/jest", "npm:26.0.24"],
             ["@types/node", "npm:15.14.9"],
