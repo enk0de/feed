@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { FRAME_PADDING_DEFAULT, FRAME_PADDING_MOBILE } from '../../constants/paddings';
 import useScrolled from '../../hooks/useScrolled';
 import { styled } from '../../stitches.config';
@@ -21,10 +20,14 @@ export default function Header() {
         </LogoImageWrapper>
         <HeaderNavWrapper>
           <HeaderNavItem>
-            <Link href="https://www.hoondev.com/">resume</Link>
+            <a href="https://www.hoondev.com/" target="_blank" rel="noreferrer">
+              resume
+            </a>
           </HeaderNavItem>
           <HeaderNavItem>
-            <Link href="https://github.com/hoondeveloper">github</Link>
+            <a href="https://github.com/hoondeveloper" target="_blank" rel="noreferrer">
+              github
+            </a>
           </HeaderNavItem>
         </HeaderNavWrapper>
       </HeaderLeftArea>
