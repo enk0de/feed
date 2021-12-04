@@ -1,0 +1,2 @@
+export const FRAME_PADDING_DEFAULT = 40;
+export const FRAME_PADDING_MOBILE = 20;
