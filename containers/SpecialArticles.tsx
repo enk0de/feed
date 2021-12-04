@@ -1,5 +1,6 @@
 import { UIEvent, useCallback, useEffect, useRef, useState } from 'react';
 import SpecialArticle from '../components/Article/SpecialArticle';
+import { FRAME_PADDING_DEFAULT, FRAME_PADDING_MOBILE } from '../constants/paddings';
 import { styled } from '../stitches.config';
 
 export default function SpecialArticles() {
@@ -82,16 +83,24 @@ const ScrollArea = styled('div', {
     justifyContent: 'flex-start'
   },
   spaceX: '20px',
-  padding: '12px 40px 40px',
   width: '100%',
-  boxSizing: 'border-box'
+  boxSizing: 'border-box',
+  padding: `12px ${FRAME_PADDING_MOBILE}px ${FRAME_PADDING_MOBILE}px`,
+  '@bp2': {
+    padding: `12px ${FRAME_PADDING_DEFAULT}px ${FRAME_PADDING_DEFAULT}px`
+  },
+  '&::-webkit-scrollbar': {
+    display: 'none'
+  },
+  '-ms-overflow-style': 'none',
+  'scrollbar-width': 'none'
 });
 
 const ScrollShadow = styled('div', {
   position: 'absolute',
   top: 0,
   bottom: 0,
-  width: 100,
+  width: 50,
   pointerEvents: 'none',
   transitionProperty: 'opacity',
   transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
@@ -100,11 +109,13 @@ const ScrollShadow = styled('div', {
     type: {
       right: {
         right: 0,
-        background: 'linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)'
+        background:
+          'linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 200) 100%)'
       },
       left: {
         left: 0,
-        background: 'linear-gradient(-90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%)'
+        background:
+          'linear-gradient(-90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 200) 100%)'
       }
     },
     invisible: {

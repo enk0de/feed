@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { FRAME_PADDING_DEFAULT, FRAME_PADDING_MOBILE } from '../../constants/paddings';
 import useScrolled from '../../hooks/useScrolled';
 import { styled } from '../../stitches.config';
 import ThemeToggler from './ThemeToggler';
@@ -10,13 +11,14 @@ export default function Header() {
   return (
     <HeaderContainer scrolled={scrolled}>
       <HeaderLeftArea>
-        <Image
-          src="/assets/logo.svg"
-          width="152"
-          height="27"
-          alt="hoondevfeed"
-          priority={true}
-        ></Image>
+        <LogoImageWrapper>
+          <Image
+            src="/assets/logo.svg"
+            layout="fill"
+            alt="hoondevfeed"
+            priority={true}
+          ></Image>
+        </LogoImageWrapper>
         <HeaderNavWrapper>
           <HeaderNavItem>
             <Link href="https://www.hoondev.com/">resume</Link>
@@ -31,6 +33,16 @@ export default function Header() {
   );
 }
 
+const LogoImageWrapper = styled('div', {
+  position: 'relative',
+  width: 130,
+  height: 23,
+  '@bp2': {
+    width: 152,
+    height: 27
+  }
+});
+
 const HeaderContainer = styled('header', {
   position: 'fixed',
   top: 0,
@@ -39,7 +51,10 @@ const HeaderContainer = styled('header', {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  padding: '20px 40px',
+  padding: `20px ${FRAME_PADDING_MOBILE}px`,
+  '@bp2': {
+    padding: `20px ${FRAME_PADDING_DEFAULT}px`
+  },
   background: 'white',
   backdropFilter: 'blur(40px)',
   variants: {
@@ -57,13 +72,19 @@ const HeaderContainer = styled('header', {
 const HeaderLeftArea = styled('div', {
   display: 'flex',
   alignItems: 'center',
-  spaceX: '25px'
+  spaceX: '15px',
+  '@bp2': {
+    spaceX: '25px'
+  }
 });
 
 const HeaderNavWrapper = styled('ul', {
   display: 'flex',
-  spaceX: '25px',
-  fontSize: 16
+  fontSize: 16,
+  spaceX: '15px',
+  '@bp2': {
+    spaceX: '25px'
+  }
 });
 
 const HeaderNavItem = styled('li', {
