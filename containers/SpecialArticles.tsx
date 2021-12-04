@@ -85,9 +85,16 @@ const ScrollArea = styled('div', {
   spaceX: '20px',
   width: '100%',
   boxSizing: 'border-box',
-  padding: `12px ${FRAME_PADDING_MOBILE}px ${FRAME_PADDING_MOBILE}px`,
+  /** Safari Scroll Padding Issue */
+  'a:last-child > article': {
+    marginRight: `${FRAME_PADDING_MOBILE}px`
+  },
+  padding: `12px 0 ${FRAME_PADDING_MOBILE}px ${FRAME_PADDING_MOBILE}px`,
   '@bp2': {
-    padding: `12px ${FRAME_PADDING_DEFAULT}px ${FRAME_PADDING_DEFAULT}px`
+    'a:last-child > article': {
+      marginRight: `${FRAME_PADDING_DEFAULT}px`
+    },
+    padding: `12px 0 ${FRAME_PADDING_DEFAULT}px ${FRAME_PADDING_DEFAULT}px`
   },
   '&::-webkit-scrollbar': {
     display: 'none'
