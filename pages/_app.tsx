@@ -1,4 +1,3 @@
-import '@splidejs/splide/dist/css/splide.min.css';
 import { ThemeProvider } from 'next-themes';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
