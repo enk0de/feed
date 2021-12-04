@@ -20,8 +20,11 @@ export default function LatestArticles() {
 
 const LatestArticlesContainer = styled('section', {
   spaceY: 12,
-  padding: `12px 0 ${FRAME_PADDING_MOBILE}px ${FRAME_PADDING_MOBILE}px`,
+  padding: `12px ${FRAME_PADDING_MOBILE}px`,
+  margin: '0 auto',
+  maxWidth: '1140px',
   '@bp2': {
-    padding: `12px 0 ${FRAME_PADDING_DEFAULT}px ${FRAME_PADDING_DEFAULT}px`
-  }
+    padding: `12px ${FRAME_PADDING_DEFAULT}px`
+  },
+  boxSizing: 'border-box'
 });
