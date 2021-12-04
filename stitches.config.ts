@@ -56,6 +56,11 @@ export const {
       darkEl6: '0px 20px 32px 0px rgba(0,0,0,0.32), 0px 2px 8px 0px rgba(0,0,0,0.08)'
     }
   },
+  media: {
+    bp1: '(min-width: 640px)',
+    bp2: '(min-width: 768px)',
+    bp3: '(min-width: 1024px)'
+  },
   utils: {
     // Abbreviated margin properties
     m: (value: PropertyValue<'margin'>) => ({
