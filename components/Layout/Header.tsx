@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { FRAME_PADDING_DEFAULT, FRAME_PADDING_MOBILE } from '../../constants/paddings';
 import useScrolled from '../../hooks/useScrolled';
 import { styled } from '../../stitches.config';
@@ -10,14 +11,16 @@ export default function Header() {
   return (
     <HeaderContainer scrolled={scrolled}>
       <HeaderLeftArea>
-        <LogoImageWrapper>
-          <Image
-            src="/assets/logo.svg"
-            layout="fill"
-            alt="hoondevfeed"
-            priority={true}
-          ></Image>
-        </LogoImageWrapper>
+        <Link href="/" passHref>
+          <LogoImageWrapper>
+            <Image
+              src="/assets/logo.svg"
+              layout="fill"
+              alt="hoondevfeed"
+              priority={true}
+            ></Image>
+          </LogoImageWrapper>
+        </Link>
         <HeaderNavWrapper>
           <HeaderNavItem>
             <a href="https://www.hoondev.com/" target="_blank" rel="noreferrer">
@@ -36,14 +39,15 @@ export default function Header() {
   );
 }
 
-const LogoImageWrapper = styled('div', {
+const LogoImageWrapper = styled('a', {
   position: 'relative',
   width: 130,
   height: 23,
   '@bp2': {
     width: 152,
     height: 27
-  }
+  },
+  cursor: 'pointer'
 });
 
 const HeaderContainer = styled('header', {
