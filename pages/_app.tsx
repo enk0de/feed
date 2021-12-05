@@ -21,7 +21,13 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <ThemeProvider attribute="class">
       <Head>
-        <title>훈데브 피드</title>
+        <title>hoondevfeed</title>
+        <meta name="description" content="Stories of Frontend Engineering" />
+        <meta name="author" content="Lim Ji Hoon" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="hoondevfeed" />
+        <meta property="og:description" content="Stories of Frontend Engineering" />
+        {/* <meta property="og:image" content={OgImage.src} /> */}
       </Head>
       {getLayout(<Component {...pageProps} />)}
     </ThemeProvider>
