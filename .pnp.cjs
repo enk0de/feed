@@ -54,8 +54,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.4.1"],
             ["react", "npm:17.0.2"],
             ["react-dom", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:17.0.2"],
-            ["remark", "npm:13.0.0"],
-            ["remark-html", "npm:13.0.1"],
             ["typescript", "patch:typescript@npm%3A4.4.4#~builtin<compat/typescript>::version=4.4.4&hash=493e53"]
           ],
           "linkType": "SOFT",
@@ -2253,15 +2251,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["character-entities-html4", [
-        ["npm:1.1.4", {
-          "packageLocation": "./.yarn/cache/character-entities-html4-npm-1.1.4-a40dc3af2a-22536aba07.zip/node_modules/character-entities-html4/",
-          "packageDependencies": [
-            ["character-entities-html4", "npm:1.1.4"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["character-entities-legacy", [
         ["npm:1.1.4", {
           "packageLocation": "./.yarn/cache/character-entities-legacy-npm-1.1.4-e3e7c8ee55-fe03a82c15.zip/node_modules/character-entities-legacy/",
@@ -4034,15 +4023,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["hast-util-is-element", [
-        ["npm:1.1.0", {
-          "packageLocation": "./.yarn/cache/hast-util-is-element-npm-1.1.0-be10e62fa7-30fad3f65e.zip/node_modules/hast-util-is-element/",
-          "packageDependencies": [
-            ["hast-util-is-element", "npm:1.1.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["hast-util-parse-selector", [
         ["npm:2.2.5", {
           "packageLocation": "./.yarn/cache/hast-util-parse-selector-npm-2.2.5-cd773533ea-22ee4afbd1.zip/node_modules/hast-util-parse-selector/",
@@ -4071,35 +4051,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["hast-util-sanitize", [
-        ["npm:3.0.2", {
-          "packageLocation": "./.yarn/cache/hast-util-sanitize-npm-3.0.2-33fdc075da-b02f5dc902.zip/node_modules/hast-util-sanitize/",
-          "packageDependencies": [
-            ["hast-util-sanitize", "npm:3.0.2"],
-            ["xtend", "npm:4.0.2"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["hast-util-to-html", [
-        ["npm:7.1.3", {
-          "packageLocation": "./.yarn/cache/hast-util-to-html-npm-7.1.3-225728144d-5fb8d45ada.zip/node_modules/hast-util-to-html/",
-          "packageDependencies": [
-            ["hast-util-to-html", "npm:7.1.3"],
-            ["ccount", "npm:1.1.0"],
-            ["comma-separated-tokens", "npm:1.0.8"],
-            ["hast-util-is-element", "npm:1.1.0"],
-            ["hast-util-whitespace", "npm:1.0.4"],
-            ["html-void-elements", "npm:1.0.5"],
-            ["property-information", "npm:5.6.0"],
-            ["space-separated-tokens", "npm:1.1.5"],
-            ["stringify-entities", "npm:3.1.0"],
-            ["unist-util-is", "npm:4.1.0"],
-            ["xtend", "npm:4.0.2"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["hast-util-to-parse5", [
         ["npm:6.0.0", {
           "packageLocation": "./.yarn/cache/hast-util-to-parse5-npm-6.0.0-2107a01c5e-91a36244e3.zip/node_modules/hast-util-to-parse5/",
@@ -4110,15 +4061,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["web-namespaces", "npm:1.1.4"],
             ["xtend", "npm:4.0.2"],
             ["zwitch", "npm:1.0.5"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["hast-util-whitespace", [
-        ["npm:1.0.4", {
-          "packageLocation": "./.yarn/cache/hast-util-whitespace-npm-1.0.4-43bb1ff3d0-b7f4a1942b.zip/node_modules/hast-util-whitespace/",
-          "packageDependencies": [
-            ["hast-util-whitespace", "npm:1.0.4"]
           ],
           "linkType": "HARD",
         }]
@@ -4998,15 +4940,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["longest-streak", [
-        ["npm:2.0.4", {
-          "packageLocation": "./.yarn/cache/longest-streak-npm-2.0.4-a83545ec19-28b8234a14.zip/node_modules/longest-streak/",
-          "packageDependencies": [
-            ["longest-streak", "npm:2.0.4"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["loose-envify", [
         ["npm:1.4.0", {
           "packageLocation": "./.yarn/cache/loose-envify-npm-1.4.0-6307b72ccf-6517e24e0c.zip/node_modules/loose-envify/",
@@ -5112,20 +5045,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["mdast-util-from-markdown", [
-        ["npm:0.8.5", {
-          "packageLocation": "./.yarn/cache/mdast-util-from-markdown-npm-0.8.5-0b8b6dc7ba-5a9d0d753a.zip/node_modules/mdast-util-from-markdown/",
-          "packageDependencies": [
-            ["mdast-util-from-markdown", "npm:0.8.5"],
-            ["@types/mdast", "npm:3.0.10"],
-            ["mdast-util-to-string", "npm:2.0.0"],
-            ["micromark", "npm:2.11.4"],
-            ["parse-entities", "npm:2.0.0"],
-            ["unist-util-stringify-position", "npm:2.0.3"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["mdast-util-to-hast", [
         ["npm:10.0.1", {
           "packageLocation": "./.yarn/cache/mdast-util-to-hast-npm-10.0.1-2ebdc3b7fc-e5f385757d.zip/node_modules/mdast-util-to-hast/",
@@ -5139,45 +5058,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["unist-util-generated", "npm:1.1.6"],
             ["unist-util-position", "npm:3.1.0"],
             ["unist-util-visit", "npm:2.0.3"]
-          ],
-          "linkType": "HARD",
-        }],
-        ["npm:10.2.0", {
-          "packageLocation": "./.yarn/cache/mdast-util-to-hast-npm-10.2.0-a2f4409b10-72df2dd9bf.zip/node_modules/mdast-util-to-hast/",
-          "packageDependencies": [
-            ["mdast-util-to-hast", "npm:10.2.0"],
-            ["@types/mdast", "npm:3.0.10"],
-            ["@types/unist", "npm:2.0.6"],
-            ["mdast-util-definitions", "npm:4.0.0"],
-            ["mdurl", "npm:1.0.1"],
-            ["unist-builder", "npm:2.0.3"],
-            ["unist-util-generated", "npm:1.1.6"],
-            ["unist-util-position", "npm:3.1.0"],
-            ["unist-util-visit", "npm:2.0.3"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["mdast-util-to-markdown", [
-        ["npm:0.6.5", {
-          "packageLocation": "./.yarn/cache/mdast-util-to-markdown-npm-0.6.5-6da59c9db9-7ebc47533b.zip/node_modules/mdast-util-to-markdown/",
-          "packageDependencies": [
-            ["mdast-util-to-markdown", "npm:0.6.5"],
-            ["@types/unist", "npm:2.0.6"],
-            ["longest-streak", "npm:2.0.4"],
-            ["mdast-util-to-string", "npm:2.0.0"],
-            ["parse-entities", "npm:2.0.0"],
-            ["repeat-string", "npm:1.6.1"],
-            ["zwitch", "npm:1.0.5"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["mdast-util-to-string", [
-        ["npm:2.0.0", {
-          "packageLocation": "./.yarn/cache/mdast-util-to-string-npm-2.0.0-3a5d9c4970-0b2113ada1.zip/node_modules/mdast-util-to-string/",
-          "packageDependencies": [
-            ["mdast-util-to-string", "npm:2.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -5205,17 +5085,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/merge2-npm-1.4.1-a2507bd06c-7268db63ed.zip/node_modules/merge2/",
           "packageDependencies": [
             ["merge2", "npm:1.4.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["micromark", [
-        ["npm:2.11.4", {
-          "packageLocation": "./.yarn/cache/micromark-npm-2.11.4-f7ec94840a-f8a5477d39.zip/node_modules/micromark/",
-          "packageDependencies": [
-            ["micromark", "npm:2.11.4"],
-            ["debug", "virtual:40c87ada7f2f684a486a15e9daad470176b55201376bfdeb15dad896f5233b78f99666966eda31038040b4d17aa8b8f8bf53fddc6773a558064319b9a0677061#npm:4.3.2"],
-            ["parse-entities", "npm:2.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -6511,35 +6380,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["remark", [
-        ["npm:13.0.0", {
-          "packageLocation": "./.yarn/cache/remark-npm-13.0.0-7879967618-e3432bfa1b.zip/node_modules/remark/",
-          "packageDependencies": [
-            ["remark", "npm:13.0.0"],
-            ["remark-parse", "npm:9.0.0"],
-            ["remark-stringify", "npm:9.0.1"],
-            ["unified", "npm:9.2.2"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["remark-footnotes", [
         ["npm:2.0.0", {
           "packageLocation": "./.yarn/cache/remark-footnotes-npm-2.0.0-b0be266d8e-f2f87ffd6f.zip/node_modules/remark-footnotes/",
           "packageDependencies": [
             ["remark-footnotes", "npm:2.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["remark-html", [
-        ["npm:13.0.1", {
-          "packageLocation": "./.yarn/cache/remark-html-npm-13.0.1-e49407b8f6-75250044b5.zip/node_modules/remark-html/",
-          "packageDependencies": [
-            ["remark-html", "npm:13.0.1"],
-            ["hast-util-sanitize", "npm:3.0.2"],
-            ["hast-util-to-html", "npm:7.1.3"],
-            ["mdast-util-to-hast", "npm:10.2.0"]
           ],
           "linkType": "HARD",
         }]
@@ -6584,14 +6429,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["xtend", "npm:4.0.2"]
           ],
           "linkType": "HARD",
-        }],
-        ["npm:9.0.0", {
-          "packageLocation": "./.yarn/cache/remark-parse-npm-9.0.0-da1fe74019-5010488054.zip/node_modules/remark-parse/",
-          "packageDependencies": [
-            ["remark-parse", "npm:9.0.0"],
-            ["mdast-util-from-markdown", "npm:0.8.5"]
-          ],
-          "linkType": "HARD",
         }]
       ]],
       ["remark-squeeze-paragraphs", [
@@ -6600,16 +6437,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["remark-squeeze-paragraphs", "npm:4.0.0"],
             ["mdast-squeeze-paragraphs", "npm:4.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["remark-stringify", [
-        ["npm:9.0.1", {
-          "packageLocation": "./.yarn/cache/remark-stringify-npm-9.0.1-1b51d227a7-93f46076f4.zip/node_modules/remark-stringify/",
-          "packageDependencies": [
-            ["remark-stringify", "npm:9.0.1"],
-            ["mdast-util-to-markdown", "npm:0.6.5"]
           ],
           "linkType": "HARD",
         }]
@@ -6752,8 +6579,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.4.1"],
             ["react", "npm:17.0.2"],
             ["react-dom", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:17.0.2"],
-            ["remark", "npm:13.0.0"],
-            ["remark-html", "npm:13.0.1"],
             ["typescript", "patch:typescript@npm%3A4.4.4#~builtin<compat/typescript>::version=4.4.4&hash=493e53"]
           ],
           "linkType": "SOFT",
@@ -7220,18 +7045,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["stringify-entities", [
-        ["npm:3.1.0", {
-          "packageLocation": "./.yarn/cache/stringify-entities-npm-3.1.0-78dc656761-5b6212e298.zip/node_modules/stringify-entities/",
-          "packageDependencies": [
-            ["stringify-entities", "npm:3.1.0"],
-            ["character-entities-html4", "npm:1.1.4"],
-            ["character-entities-legacy", "npm:1.1.4"],
-            ["xtend", "npm:4.0.2"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["strip-ansi", [
         ["npm:3.0.1", {
           "packageLocation": "./.yarn/cache/strip-ansi-npm-3.0.1-6aec1365b9-9b974de611.zip/node_modules/strip-ansi/",
@@ -7646,19 +7459,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/unified-npm-9.2.0-2edf64a14a-0cac4ae119.zip/node_modules/unified/",
           "packageDependencies": [
             ["unified", "npm:9.2.0"],
-            ["bail", "npm:1.0.5"],
-            ["extend", "npm:3.0.2"],
-            ["is-buffer", "npm:2.0.5"],
-            ["is-plain-obj", "npm:2.1.0"],
-            ["trough", "npm:1.0.5"],
-            ["vfile", "npm:4.2.1"]
-          ],
-          "linkType": "HARD",
-        }],
-        ["npm:9.2.2", {
-          "packageLocation": "./.yarn/cache/unified-npm-9.2.2-65676eec78-7c24461be7.zip/node_modules/unified/",
-          "packageDependencies": [
-            ["unified", "npm:9.2.2"],
             ["bail", "npm:1.0.5"],
             ["extend", "npm:3.0.2"],
             ["is-buffer", "npm:2.0.5"],
