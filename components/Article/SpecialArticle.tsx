@@ -37,8 +37,14 @@ const SpecialArticleContainer = styled('article', {
     empty: {
       false: {
         '&:hover': {
-          transform: 'translateY(-5px)',
-          boxShadow: '$lightEl6'
+          outline: '3px solid rgba(0,0,0,.2)'
+        },
+        '@bp2': {
+          '&:hover': {
+            transform: 'translateY(-5px)',
+            boxShadow: '$lightEl6',
+            outline: 'none'
+          }
         }
       }
     }
