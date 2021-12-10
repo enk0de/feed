@@ -1,19 +1,27 @@
+import Link from 'next/link';
 import LatestArticle from '../components/Article/LatestArticle';
 import { TypoLabel } from '../components/Common/Typography';
 import { FRAME_PADDING_DEFAULT, FRAME_PADDING_MOBILE } from '../constants/paddings';
 import { styled } from '../stitches.config';
+import PostType from '../types/post';
 
-export default function LatestArticles() {
+interface ILatestArticlesProps {
+  posts: PostType[];
+}
+
+export default function LatestArticles({ posts }: ILatestArticlesProps) {
   return (
     <LatestArticlesContainer>
       <TypoLabel type="large" css={{ color: '$dark2' }}>
         최신 아티클
       </TypoLabel>
-      <LatestArticle
-        title="포트폴리오 사이트를 리뉴얼합니다!"
-        category="잡다한 이야기"
-        createdAt="2021. 12. 04"
-      />
+      {posts?.map(({ slug, date, title, category }) => (
+        <Link href={`/posts/${slug}`} key={slug}>
+          <a>
+            <LatestArticle title={title} category={category} createdAt={date} />
+          </a>
+        </Link>
+      ))}
     </LatestArticlesContainer>
   );
 }
