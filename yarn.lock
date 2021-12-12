@@ -460,7 +460,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdx-js/mdx@npm:1.6.22":
+"@mdx-js/mdx@npm:1.6.22, @mdx-js/mdx@npm:^1.6.22":
   version: 1.6.22
   resolution: "@mdx-js/mdx@npm:1.6.22"
   dependencies:
@@ -2448,6 +2448,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"esbuild@npm:^0.12.9":
+  version: 0.12.29
+  resolution: "esbuild@npm:0.12.29"
+  bin:
+    esbuild: bin/esbuild
+  checksum: 06a6e84eff02899b45c7d4441199f7bbc824a9f5a2d0332bfe9873963751213c71bcb03b8db96babbc45ef31c140580ff64317ee7600983fc88b84c2d9788bbf
+  languageName: node
+  linkType: hard
+
 "escalade@npm:^3.1.1":
   version: 3.1.1
   resolution: "escalade@npm:3.1.1"
@@ -2852,6 +2861,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"feed@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "feed@workspace:."
+  dependencies:
+    "@mdx-js/loader": ^1.6.22
+    "@mdx-js/react": ^1.6.22
+    "@next/mdx": ^12.0.7
+    "@stitches/react": ^1.2.5
+    "@types/jest": ^26.0.23
+    "@types/node": ^15.6.0
+    "@types/react": ^17.0.6
+    "@types/react-dom": ^17.0.5
+    "@yarnpkg/pnpify": ^3.1.1-rc.2
+    date-fns: 2.21.3
+    eslint: <8.0.0
+    eslint-config-next: 12.0.3
+    eslint-config-prettier: ^8.3.0
+    gray-matter: 4.0.3
+    next: latest
+    next-mdx-remote: ^3.0.8
+    next-themes: ^0.0.15
+    prettier: ^2.4.1
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    typescript: ^4.2.4
+  languageName: unknown
+  linkType: soft
+
 "file-entry-cache@npm:^6.0.1":
   version: 6.0.1
   resolution: "file-entry-cache@npm:6.0.1"
@@ -2897,6 +2934,16 @@ __metadata:
     locate-path: ^5.0.0
     path-exists: ^4.0.0
   checksum: 4c172680e8f8c1f78839486e14a43ef82e9decd0e74145f40707cc42e7420506d5ec92d9a11c22bd2c48fb0c384ea05dd30e10dd152fefeec6f2f75282a8b844
+  languageName: node
+  linkType: hard
+
+"find-up@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "find-up@npm:5.0.0"
+  dependencies:
+    locate-path: ^6.0.0
+    path-exists: ^4.0.0
+  checksum: 07955e357348f34660bde7920783204ff5a26ac2cafcaa28bace494027158a97b9f56faaf2d89a6106211a8174db650dd9f503f9c0d526b1202d5554a00b9095
   languageName: node
   linkType: hard
 
@@ -4027,6 +4074,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"locate-path@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "locate-path@npm:6.0.0"
+  dependencies:
+    p-locate: ^5.0.0
+  checksum: 72eb661788a0368c099a184c59d2fee760b3831c9c1c33955e8a19ae4a21b4116e53fa736dc086cdeb9fce9f7cc508f2f92d2d3aae516f133e16a2bb59a39f5a
+  languageName: node
+  linkType: hard
+
 "lodash.merge@npm:^4.6.2":
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
@@ -4395,6 +4451,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"next-mdx-remote@npm:^3.0.8":
+  version: 3.0.8
+  resolution: "next-mdx-remote@npm:3.0.8"
+  dependencies:
+    "@mdx-js/mdx": ^1.6.22
+    "@mdx-js/react": ^1.6.22
+    esbuild: ^0.12.9
+    pkg-dir: ^5.0.0
+  peerDependencies:
+    react: ">=16.x <=17.x"
+    react-dom: ">=16.x <=17.x"
+  checksum: de372708085c7f48ec1c8fb48a9a79cd261235b2d328df0900c9983530d659619f30acc37f5c28eb9813797257ff604449c673b4fba9d17c93af149f436ced6b
+  languageName: node
+  linkType: hard
+
 "next-themes@npm:^0.0.15":
   version: 0.0.15
   resolution: "next-themes@npm:0.0.15"
@@ -4748,7 +4819,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"p-limit@npm:3.1.0":
+"p-limit@npm:3.1.0, p-limit@npm:^3.0.2":
   version: 3.1.0
   resolution: "p-limit@npm:3.1.0"
   dependencies:
@@ -4790,6 +4861,15 @@ __metadata:
   dependencies:
     p-limit: ^2.2.0
   checksum: 513bd14a455f5da4ebfcb819ef706c54adb09097703de6aeaa5d26fe5ea16df92b48d1ac45e01e3944ce1e6aa2a66f7f8894742b8c9d6e276e16cd2049a2b870
+  languageName: node
+  linkType: hard
+
+"p-locate@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "p-locate@npm:5.0.0"
+  dependencies:
+    p-limit: ^3.0.2
+  checksum: 1623088f36cf1cbca58e9b61c4e62bf0c60a07af5ae1ca99a720837356b5b6c5ba3eb1b2127e47a06865fee59dd0453cad7cc844cda9d5a62ac1a5a51b7c86d3
   languageName: node
   linkType: hard
 
@@ -4969,6 +5049,15 @@ __metadata:
   dependencies:
     find-up: ^4.0.0
   checksum: 9863e3f35132bf99ae1636d31ff1e1e3501251d480336edb1c211133c8d58906bed80f154a1d723652df1fda91e01c7442c2eeaf9dc83157c7ae89087e43c8d6
+  languageName: node
+  linkType: hard
+
+"pkg-dir@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "pkg-dir@npm:5.0.0"
+  dependencies:
+    find-up: ^5.0.0
+  checksum: b167bb8dac7bbf22b1d5e30ec223e6b064b84b63010c9d49384619a36734caf95ed23ad23d4f9bd975e8e8082b60a83395f43a89bb192df53a7c25a38ecb57d9
   languageName: node
   linkType: hard
 
@@ -5501,33 +5590,6 @@ __metadata:
   checksum: 006accc40578ee2beae382757c4ce2908a826b27e2b079efdcd2959ee544ddf210b7b5d7d5e80467807604244e7388427330f5c6d4cd61e6edaddc5773ccc393
   languageName: node
   linkType: hard
-
-"root-workspace-0b6124@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "root-workspace-0b6124@workspace:."
-  dependencies:
-    "@mdx-js/loader": ^1.6.22
-    "@mdx-js/react": ^1.6.22
-    "@next/mdx": ^12.0.7
-    "@stitches/react": ^1.2.5
-    "@types/jest": ^26.0.23
-    "@types/node": ^15.6.0
-    "@types/react": ^17.0.6
-    "@types/react-dom": ^17.0.5
-    "@yarnpkg/pnpify": ^3.1.1-rc.2
-    date-fns: 2.21.3
-    eslint: <8.0.0
-    eslint-config-next: 12.0.3
-    eslint-config-prettier: ^8.3.0
-    gray-matter: 4.0.3
-    next: latest
-    next-themes: ^0.0.15
-    prettier: ^2.4.1
-    react: ^17.0.2
-    react-dom: ^17.0.2
-    typescript: ^4.2.4
-  languageName: unknown
-  linkType: soft
 
 "run-parallel@npm:^1.1.9":
   version: 1.2.0
