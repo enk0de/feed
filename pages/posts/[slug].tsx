@@ -1,9 +1,9 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { MDXRemote } from 'next-mdx-remote';
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
+import { ParsedUrlQuery } from 'querystring';
 import { ReactElement } from 'react';
 import {
-  TypoBody,
   TypoHeadingH1,
   TypoHeadingH3BaseStyleObj,
   TypoHeadingH4BaseStyleObj,
@@ -13,23 +13,21 @@ import {
 import PostLayout from '../../components/Layout/PostLayout';
 import { getAllPosts, getPostBySlug } from '../../lib/api';
 import { styled } from '../../stitches.config';
+import PostType from '../../types/post';
 
-interface IMDXComponentWrapper {
-  children?: ReactElement;
+interface IPostPageProps {
+  title: string;
+  content: MDXRemoteSerializeResult;
 }
 
-const PostStyleWrapper = styled(
-  'div',
-  {
-    h1: TypoHeadingH3BaseStyleObj,
-    h2: TypoHeadingH4BaseStyleObj,
-    h3: TypoHeadingH5BaseStyleObj,
-    h4: TypoHeadingH6BaseStyleObj
-  },
-  TypoBody
-);
+const PostStyleWrapper = styled('div', {
+  h1: TypoHeadingH3BaseStyleObj,
+  h2: TypoHeadingH4BaseStyleObj,
+  h3: TypoHeadingH5BaseStyleObj,
+  h4: TypoHeadingH6BaseStyleObj
+});
 
-const PostPage = ({ title, content }) => {
+const PostPage = ({ title, content }: IPostPageProps) => {
   return (
     <>
       <TypoHeadingH1
@@ -56,14 +54,17 @@ PostPage.getLayout = function (page: ReactElement) {
   return <PostLayout>{page}</PostLayout>;
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const post = getPostBySlug(params.slug, ['title', 'content']);
-  const mdxSource = await serialize(post.content);
+type GetStaticPropsParams = ParsedUrlQuery & Pick<PostType, 'slug'>;
 
-  return {
-    props: { title: post.title, content: mdxSource }
+export const getStaticProps: GetStaticProps<IPostPageProps, GetStaticPropsParams> =
+  async ({ params }) => {
+    const post = getPostBySlug(params!.slug, ['title', 'content']);
+    const mdxSource = await serialize(post.content);
+
+    return {
+      props: { title: post.title, content: mdxSource }
+    };
   };
-};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = getAllPosts(['slug', 'date']);
