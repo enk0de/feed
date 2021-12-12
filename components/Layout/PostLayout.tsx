@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { styled } from '../../stitches.config';
-import { TypoHeadingH1, TypoHeadingH3 } from '../Common/Typography';
+import { TypoHeadingH1 } from '../Common/Typography';
 import Footer from './Footer';
 import Header from './Header';
 
@@ -9,17 +9,16 @@ interface IPostMetadata {
 }
 
 interface IPostLayoutProps {
-  meta: IPostMetadata;
   children?: ReactNode;
 }
 
-export default function PostLayout({ meta, children }: IPostLayoutProps) {
+export default function PostLayout({ children }: IPostLayoutProps) {
   return (
     <>
       <Header />
       <PostLayoutContentsWrapper>
         <Contents>
-          <TypoHeadingH1
+          {/* <TypoHeadingH1
             css={{
               textAlign: 'center',
               fontSize: 28,
@@ -30,8 +29,8 @@ export default function PostLayout({ meta, children }: IPostLayoutProps) {
               }
             }}
           >
-            {meta?.title}
-          </TypoHeadingH1>
+            {metadata?.title}
+          </TypoHeadingH1> */}
           {children}
         </Contents>
       </PostLayoutContentsWrapper>
