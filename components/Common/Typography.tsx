@@ -1,40 +1,52 @@
 import { styled } from '../../stitches.config';
 
-export const TypoHeadingH1 = styled('h1', {
+export const TypoHeadingH1BaseStyleObj = {
   fontWeight: 'bold',
   fontSize: 40,
   lineHeight: '54px'
-});
+};
 
-export const TypoHeadingH2 = styled('h2', {
+export const TypoHeadingH1 = styled('h1', TypoHeadingH1BaseStyleObj);
+
+export const TypoHeadingH2BaseStyleObj = {
   fontWeight: 'bold',
   fontSize: 32,
   lineHeight: '44px'
-});
+};
 
-export const TypoHeadingH3 = styled('h3', {
+export const TypoHeadingH2 = styled('h2', TypoHeadingH2BaseStyleObj);
+
+export const TypoHeadingH3BaseStyleObj = {
   fontWeight: 'bold',
   fontSize: 28,
   lineHeight: '38px'
-});
+};
 
-export const TypoHeadingH4 = styled('h4', {
+export const TypoHeadingH3 = styled('h3', TypoHeadingH3BaseStyleObj);
+
+export const TypoHeadingH4BaseStyleObj = {
   fontWeight: 'bold',
   fontSize: 24,
   lineHeight: '32px'
-});
+};
 
-export const TypoHeadingH5 = styled('h5', {
+export const TypoHeadingH4 = styled('h4', TypoHeadingH4BaseStyleObj);
+
+export const TypoHeadingH5BaseStyleObj = {
   fontWeight: 'bold',
   fontSize: 20,
   lineHeight: '28px'
-});
+};
 
-export const TypoHeadingH6 = styled('h6', {
+export const TypoHeadingH5 = styled('h5', TypoHeadingH5BaseStyleObj);
+
+export const TypoHeadingH6BaseStyleObj = {
   fontWeight: 'bold',
   fontSize: 16,
   lineHeight: '22px'
-});
+};
+
+export const TypoHeadingH6 = styled('h6', TypoHeadingH6BaseStyleObj);
 
 export const TypoLead = styled('p', {
   fontWeight: 'bold',
@@ -67,6 +79,9 @@ export const TypoBody = styled('p', {
         lineHeight: '24px'
       }
     }
+  },
+  defaultVariants: {
+    type: 16
   }
 });
 
