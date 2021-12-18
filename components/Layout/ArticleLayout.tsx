@@ -4,25 +4,21 @@ import { styled } from '../../stitches.config';
 import Footer from './Footer';
 import Header from './Header';
 
-interface IPostMetadata {
-  title: string;
-}
-
-interface IPostLayoutProps {
+interface IArticleLayoutProps {
   children?: ReactNode;
 }
 
-export default function PostLayout({ children }: IPostLayoutProps) {
+export default function ArticleLayout({ children }: IArticleLayoutProps) {
   return (
     <>
       <Header />
-      <PostLayoutContentsWrapper>{children}</PostLayoutContentsWrapper>
+      <ArticleLayoutContentsWrapper>{children}</ArticleLayoutContentsWrapper>
       <Footer />
     </>
   );
 }
 
-const PostLayoutContentsWrapper = styled('main', {
+const ArticleLayoutContentsWrapper = styled('main', {
   maxWidth: 1140,
   width: '100%',
   padding: `30px ${FRAME_PADDING_MOBILE}px`,

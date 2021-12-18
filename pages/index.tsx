@@ -3,18 +3,18 @@ import { ReactElement } from 'react';
 import MainLayout from '../components/Layout/MainLayout';
 import LatestArticles from '../containers/LatestArticles';
 import SpecialArticles from '../containers/SpecialArticles';
-import { getAllPosts } from '../lib/api';
-import PostType from '../types/post';
+import { getAllArticles } from '../lib/api';
+import ArticleType from '../types/articles';
 
 interface IIndexProps {
-  posts: PostType[];
+  articles: ArticleType[];
 }
 
-const Index = ({ posts }: IIndexProps) => {
+const Index = ({ articles }: IIndexProps) => {
   return (
     <>
       <SpecialArticles />
-      <LatestArticles posts={posts} />
+      <LatestArticles articles={articles} />
     </>
   );
 };
@@ -24,10 +24,10 @@ Index.getLayout = function (page: ReactElement) {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = getAllPosts(['date', 'slug', 'title', 'category']);
+  const articles = getAllArticles(['date', 'slug', 'title', 'category']);
 
   return {
-    props: { posts }
+    props: { articles }
   };
 };
 

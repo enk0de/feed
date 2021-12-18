@@ -7,7 +7,7 @@ import {
   TypoHeadingH6BaseStyleObj
 } from './Typography';
 
-const PostStyleWrapper = styled('div', {
+const ArticleStyleWrapper = styled('div', {
   'p, *': { ...TypoBody16BaseStyleObj, color: '$dark1' },
   // block element style
   'address,article,aside,blockquote,canvas,dd,div,dl,dt,fieldset,figcaption,figure,footer,form,h1,h1,h3,h4,h5,h6,header,hr,li,main,nav,noscript,ol,p,pre,section,table,tfoot,ul,video':
@@ -53,4 +53,4 @@ const PostStyleWrapper = styled('div', {
   }
 });
 
-export default PostStyleWrapper;
+export default ArticleStyleWrapper;
