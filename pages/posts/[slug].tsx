@@ -2,30 +2,17 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import { ParsedUrlQuery } from 'querystring';
-import { ReactElement } from 'react';
-import {
-  TypoHeadingH1,
-  TypoHeadingH3BaseStyleObj,
-  TypoHeadingH4BaseStyleObj,
-  TypoHeadingH5BaseStyleObj,
-  TypoHeadingH6BaseStyleObj
-} from '../../components/Common/Typography';
+import React, { ReactElement } from 'react';
+import PostStyleWrapper from '../../components/Common/PostStyleWrapper';
+import { TypoHeadingH1 } from '../../components/Common/Typography';
 import PostLayout from '../../components/Layout/PostLayout';
 import { getAllPosts, getPostBySlug } from '../../lib/api';
-import { styled } from '../../stitches.config';
 import PostType from '../../types/post';
 
 interface IPostPageProps {
   title: string;
   content: MDXRemoteSerializeResult;
 }
-
-const PostStyleWrapper = styled('div', {
-  h1: TypoHeadingH3BaseStyleObj,
-  h2: TypoHeadingH4BaseStyleObj,
-  h3: TypoHeadingH5BaseStyleObj,
-  h4: TypoHeadingH6BaseStyleObj
-});
 
 const PostPage = ({ title, content }: IPostPageProps) => {
   return (
@@ -35,6 +22,7 @@ const PostPage = ({ title, content }: IPostPageProps) => {
           textAlign: 'center',
           fontSize: 28,
           lineHeight: '38px',
+          marginBottom: '40px',
           '@bp2': {
             fontSize: 40,
             lineHeight: '54px'

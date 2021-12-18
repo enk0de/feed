@@ -66,18 +66,22 @@ export const TypoTiny = styled('p', {
   lineHeight: '12px'
 });
 
+export const TypoBody14BaseStyleObj = {
+  fontSize: 14,
+  lineHeight: '24px'
+};
+
+export const TypoBody16BaseStyleObj = {
+  fontSize: 16,
+  lineHeight: '24px'
+};
+
 export const TypoBody = styled('p', {
   fontWeight: 'normal',
   variants: {
     type: {
-      14: {
-        fontSize: 14,
-        lineHeight: '24px'
-      },
-      16: {
-        fontSize: 16,
-        lineHeight: '24px'
-      }
+      14: TypoBody14BaseStyleObj,
+      16: TypoBody16BaseStyleObj
     }
   },
   defaultVariants: {
