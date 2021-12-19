@@ -95,24 +95,30 @@ export const TypoBlockQuotes = styled('p', {
   lineHeight: '28px'
 });
 
+export const TypoLabelSmallBaseStyleObj = {
+  fontSize: 10,
+  lineHeight: '14px',
+  letterSpacing: 0.2
+};
+
+export const TypoLabelMediumBaseStyleObj = {
+  fontSize: 12,
+  lineHeight: '16px',
+  letterSpacing: 0.2
+};
+
+export const TypoLabelLargeBaseStyleObj = {
+  fontSize: 14,
+  lineHeight: '24px'
+};
+
 export const TypoLabel = styled('span', {
   fontWeight: 'normal',
   variants: {
     type: {
-      small: {
-        fontSize: 10,
-        lineHeight: '14px',
-        letterSpacing: 0.2
-      },
-      medium: {
-        fontSize: 12,
-        lineHeight: '16px',
-        letterSpacing: 0.2
-      },
-      large: {
-        fontSize: 14,
-        lineHeight: '24px'
-      }
+      small: TypoLabelSmallBaseStyleObj,
+      medium: TypoLabelMediumBaseStyleObj,
+      large: TypoLabelLargeBaseStyleObj
     }
   }
 });
