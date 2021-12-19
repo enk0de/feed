@@ -34,7 +34,7 @@ export default function Header() {
           </HeaderNavItem>
         </HeaderNavWrapper>
       </HeaderLeftArea>
-      <ThemeToggler />
+      {/* <ThemeToggler /> */}
     </HeaderContainer>
   );
 }
