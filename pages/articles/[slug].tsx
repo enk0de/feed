@@ -1,8 +1,10 @@
+import { format } from 'date-fns';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import { ParsedUrlQuery } from 'querystring';
 import React, { ReactElement } from 'react';
+import ArticleHeader from '../../components/Article/ArticleHeader';
 import ArticleStyleWrapper from '../../components/Common/ArticleStyleWrapper';
 import { TypoHeadingH1 } from '../../components/Common/Typography';
 import ArticleLayout from '../../components/Layout/ArticleLayout';
@@ -11,27 +13,15 @@ import ArticleType from '../../types/articles';
 
 interface IArticlePageProps {
   title: string;
+  category: string;
+  date: string;
   content: MDXRemoteSerializeResult;
 }
 
-const ArticlePage = ({ title, content }: IArticlePageProps) => {
+const ArticlePage = ({ content, ...rest }: IArticlePageProps) => {
   return (
     <>
-      <TypoHeadingH1
-        css={{
-          textAlign: 'center',
-          fontSize: 28,
-          lineHeight: '38px',
-          marginBottom: '40px',
-          '@bp2': {
-            fontSize: 40,
-            lineHeight: '54px'
-          }
-        }}
-      >
-        {title}
-      </TypoHeadingH1>
-
+      <ArticleHeader {...rest} />
       <ArticleStyleWrapper>
         <MDXRemote {...content} />
       </ArticleStyleWrapper>
@@ -47,11 +37,21 @@ type GetStaticPropsParams = ParsedUrlQuery & Pick<ArticleType, 'slug'>;
 
 export const getStaticProps: GetStaticProps<IArticlePageProps, GetStaticPropsParams> =
   async ({ params }) => {
-    const article = getArticleBySlug(params!.slug, ['title', 'content']);
+    const article = getArticleBySlug(params!.slug, [
+      'title',
+      'category',
+      'date',
+      'content'
+    ]);
     const mdxSource = await serialize(article.content);
 
     return {
-      props: { title: article.title, content: mdxSource }
+      props: {
+        title: article.title,
+        category: article.category,
+        date: format(new Date(article.date), 'yyyy.MM.dd'),
+        content: mdxSource
+      }
     };
   };
 
