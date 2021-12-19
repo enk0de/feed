@@ -1,4 +1,4 @@
-import { format } from 'date-fns';
+import { format, parse } from 'date-fns';
 import { styled } from '../../stitches.config';
 import { TypoHeadingH5, TypoLabel } from '../Common/Typography';
 
@@ -22,7 +22,10 @@ export default function LatestArticleRow({
           </TypoLabel>
           <Divider />
           <TypoLabel type="large" css={{ color: '$dark3' }}>
-            {format(new Date(createdAt), 'yyyy년 M월 d일')}
+            {format(
+              parse(createdAt, 'yyyy-MM-dd hh:mm:ss', new Date()),
+              'yyyy년 M월 d일'
+            )}
           </TypoLabel>
         </DescriptionArea>
         <TypoHeadingH5>{title}</TypoHeadingH5>

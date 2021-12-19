@@ -1,4 +1,4 @@
-import { format } from 'date-fns';
+import { format, parse } from 'date-fns';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
@@ -49,7 +49,10 @@ export const getStaticProps: GetStaticProps<IArticlePageProps, GetStaticPropsPar
       props: {
         title: article.title,
         category: article.category,
-        date: format(new Date(article.date), 'yyyy.MM.dd'),
+        date: format(
+          parse(article.date, 'yyyy-MM-dd hh:mm:ss', new Date()),
+          'yyyy년 M월 d일'
+        ),
         content: mdxSource
       }
     };
