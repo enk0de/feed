@@ -1,9 +1,9 @@
 import { UIEvent, useCallback, useEffect, useRef, useState } from 'react';
-import SpecialArticle from '../components/Article/SpecialArticle';
+import SpecialArticleRow from '../components/ArticleRow/SpecialArticleRow';
 import { FRAME_PADDING_DEFAULT, FRAME_PADDING_MOBILE } from '../constants/paddings';
 import { styled } from '../stitches.config';
 
-export default function SpecialArticles() {
+export default function SpecialArticleRowList() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [scrolledLeft, setScrolledLeft] = useState(false);
   const [scrolledRight, setScrolledRight] = useState(false);
@@ -45,32 +45,32 @@ export default function SpecialArticles() {
   }, [scrollRef]);
 
   return (
-    <SpecialArticlesContainer>
+    <SpecialArticleRowListContainer>
       <ScrollArea ref={scrollRef} onScroll={onScroll}>
-        <SpecialArticle>
-          <SpecialArticle.Image src="/assets/lol.jpeg" alt="롤" />
-          <SpecialArticle.Title>{`롤 중독자\n임지훈`}</SpecialArticle.Title>
-        </SpecialArticle>
-        <SpecialArticle>
-          <SpecialArticle.Image src="/assets/toss.jpeg" alt="토스" />
-          <SpecialArticle.Title>{`토스\n토스토스`}</SpecialArticle.Title>
-        </SpecialArticle>
-        <SpecialArticle>
-          <SpecialArticle.Image src="/assets/toss.jpeg" alt="토스" />
-          <SpecialArticle.Title>{`토스\n토스토스`}</SpecialArticle.Title>
-        </SpecialArticle>
-        <SpecialArticle>
-          <SpecialArticle.Image src="/assets/toss.jpeg" alt="토스" />
-          <SpecialArticle.Title>{`토스\n토스토스`}</SpecialArticle.Title>
-        </SpecialArticle>
+        <SpecialArticleRow>
+          <SpecialArticleRow.Image src="/assets/lol.jpeg" alt="롤" />
+          <SpecialArticleRow.Title>{`롤 중독자\n임지훈`}</SpecialArticleRow.Title>
+        </SpecialArticleRow>
+        <SpecialArticleRow>
+          <SpecialArticleRow.Image src="/assets/toss.jpeg" alt="토스" />
+          <SpecialArticleRow.Title>{`토스\n토스토스`}</SpecialArticleRow.Title>
+        </SpecialArticleRow>
+        <SpecialArticleRow>
+          <SpecialArticleRow.Image src="/assets/toss.jpeg" alt="토스" />
+          <SpecialArticleRow.Title>{`토스\n토스토스`}</SpecialArticleRow.Title>
+        </SpecialArticleRow>
+        <SpecialArticleRow>
+          <SpecialArticleRow.Image src="/assets/toss.jpeg" alt="토스" />
+          <SpecialArticleRow.Title>{`토스\n토스토스`}</SpecialArticleRow.Title>
+        </SpecialArticleRow>
       </ScrollArea>
       <ScrollShadow type="left" invisible={!scrolledLeft} />
       <ScrollShadow type="right" invisible={!scrolledRight} />
-    </SpecialArticlesContainer>
+    </SpecialArticleRowListContainer>
   );
 }
 
-const SpecialArticlesContainer = styled('section', {
+const SpecialArticleRowListContainer = styled('section', {
   position: 'relative'
 });
 

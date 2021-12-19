@@ -1,8 +1,8 @@
 import { GetStaticProps } from 'next';
 import { ReactElement } from 'react';
 import MainLayout from '../components/Layout/MainLayout';
-import LatestArticles from '../containers/LatestArticles';
-import SpecialArticles from '../containers/SpecialArticles';
+import LatestArticleRowList from '../containers/LatestArticleRowList';
+import SpecialArticleRowList from '../containers/SpecialArticleRowList';
 import { getAllArticles } from '../lib/api';
 import ArticleType from '../types/articles';
 
@@ -13,8 +13,8 @@ interface IIndexProps {
 const Index = ({ articles }: IIndexProps) => {
   return (
     <>
-      <SpecialArticles />
-      <LatestArticles articles={articles} />
+      <SpecialArticleRowList />
+      <LatestArticleRowList articles={articles} />
     </>
   );
 };

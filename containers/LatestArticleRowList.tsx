@@ -1,32 +1,32 @@
 import Link from 'next/link';
-import LatestArticle from '../components/Article/LatestArticle';
+import LatestArticleRow from '../components/ArticleRow/LatestArticleRow';
 import { TypoLabel } from '../components/Common/Typography';
 import { FRAME_PADDING_DEFAULT, FRAME_PADDING_MOBILE } from '../constants/paddings';
 import { styled } from '../stitches.config';
 import ArticleType from '../types/articles';
 
-interface ILatestArticlesProps {
+interface ILatestArticleRowListProps {
   articles: ArticleType[];
 }
 
-export default function LatestArticles({ articles }: ILatestArticlesProps) {
+export default function LatestArticleRowList({ articles }: ILatestArticleRowListProps) {
   return (
-    <LatestArticlesContainer>
+    <LatestArticleRowListContainer>
       <TypoLabel type="large" css={{ color: '$dark2' }}>
         최신 아티클
       </TypoLabel>
       {articles?.map(({ slug, date, title, category }) => (
         <Link href={`/articles/${slug}`} key={slug}>
           <a>
-            <LatestArticle title={title} category={category} createdAt={date} />
+            <LatestArticleRow title={title} category={category} createdAt={date} />
           </a>
         </Link>
       ))}
-    </LatestArticlesContainer>
+    </LatestArticleRowListContainer>
   );
 }
 
-const LatestArticlesContainer = styled('section', {
+const LatestArticleRowListContainer = styled('section', {
   spaceY: 12,
   padding: `12px ${FRAME_PADDING_MOBILE}px`,
   margin: '0 auto',

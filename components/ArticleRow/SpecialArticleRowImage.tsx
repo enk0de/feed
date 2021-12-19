@@ -1,20 +1,20 @@
 import Image, { ImageProps } from 'next/image';
 import { styled } from '../../stitches.config';
 
-export default function SpecialArticleImage({
+export default function SpecialArticleRowImage({
   alt,
   ...rest
 }: { alt: string } & ImageProps) {
   return (
-    <SpecialArticleImageContainer>
+    <SpecialArticleRowImageContainer>
       <figure style={{ position: 'relative', width: '100%', height: '100%' }}>
         <Image {...rest} alt={alt} layout="fill" objectFit="cover" priority />
       </figure>
-    </SpecialArticleImageContainer>
+    </SpecialArticleRowImageContainer>
   );
 }
 
-const SpecialArticleImageContainer = styled('div', {
+const SpecialArticleRowImageContainer = styled('div', {
   position: 'absolute',
   top: 0,
   bottom: 0,

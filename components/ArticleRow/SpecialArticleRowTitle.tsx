@@ -2,13 +2,15 @@ import { ReactNode } from 'react';
 import { styled } from '../../stitches.config';
 import { TypoHeadingH5 } from '../Common/Typography';
 
-interface ISpecialArticleTitleProps {
+interface ISpecialArticleRowTitleProps {
   children?: ReactNode;
 }
 
-export default function SpecialArticleTitle({ children }: ISpecialArticleTitleProps) {
+export default function SpecialArticleRowTitle({
+  children
+}: ISpecialArticleRowTitleProps) {
   return (
-    <SpecialArticleTitleContainer>
+    <SpecialArticleRowTitleContainer>
       <TypoHeadingH5
         css={{
           color: 'white',
@@ -19,11 +21,11 @@ export default function SpecialArticleTitle({ children }: ISpecialArticleTitlePr
       >
         {children}
       </TypoHeadingH5>
-    </SpecialArticleTitleContainer>
+    </SpecialArticleRowTitleContainer>
   );
 }
 
-const SpecialArticleTitleContainer = styled('div', {
+const SpecialArticleRowTitleContainer = styled('div', {
   display: 'flex',
   alignItems: 'flex-end',
   height: 84,

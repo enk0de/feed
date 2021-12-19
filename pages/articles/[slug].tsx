@@ -7,7 +7,7 @@ import ArticleStyleWrapper from '../../components/Common/ArticleStyleWrapper';
 import { TypoHeadingH1 } from '../../components/Common/Typography';
 import ArticleLayout from '../../components/Layout/ArticleLayout';
 import { getAllArticles, getArticleBySlug } from '../../lib/api';
-import ArticleType from '../../types/post';
+import ArticleType from '../../types/articles';
 
 interface IArticlePageProps {
   title: string;
@@ -31,6 +31,7 @@ const ArticlePage = ({ title, content }: IArticlePageProps) => {
       >
         {title}
       </TypoHeadingH1>
+
       <ArticleStyleWrapper>
         <MDXRemote {...content} />
       </ArticleStyleWrapper>

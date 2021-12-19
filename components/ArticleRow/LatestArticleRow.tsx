@@ -2,20 +2,20 @@ import { format } from 'date-fns';
 import { styled } from '../../stitches.config';
 import { TypoHeadingH5, TypoLabel } from '../Common/Typography';
 
-interface ILatestArticleProps {
+interface ILatestArticleRowProps {
   category: string;
   createdAt: string;
   title: string;
 }
 
-export default function LatestArticle({
+export default function LatestArticleRow({
   category,
   createdAt,
   title
-}: ILatestArticleProps) {
+}: ILatestArticleRowProps) {
   return (
     <a style={{ cursor: 'pointer' }}>
-      <LatestArticleContainer>
+      <LatestArticleRowContainer>
         <DescriptionArea>
           <TypoLabel type="large" css={{ color: '$dark3' }}>
             {category}
@@ -26,12 +26,12 @@ export default function LatestArticle({
           </TypoLabel>
         </DescriptionArea>
         <TypoHeadingH5>{title}</TypoHeadingH5>
-      </LatestArticleContainer>
+      </LatestArticleRowContainer>
     </a>
   );
 }
 
-const LatestArticleContainer = styled('article', {
+const LatestArticleRowContainer = styled('article', {
   display: 'flex',
   flexDirection: 'column',
   gap: 4,

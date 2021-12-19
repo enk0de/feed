@@ -1,31 +1,34 @@
 import { ReactNode } from 'react';
 import { styled } from '../../stitches.config';
-import SpecialArticleImage from './SpecialArticleImage';
-import SpecialArticleTitle from './SpecialArticleTitle';
+import SpecialArticleRowImage from './SpecialArticleRowImage';
+import SpecialArticleRowTitle from './SpecialArticleRowTitle';
 
-interface ISpecialArticleProps {
+interface ISpecialArticleRowProps {
   empty?: boolean;
   children?: ReactNode;
 }
 
-export default function SpecialArticle({ empty, children }: ISpecialArticleProps) {
+export default function SpecialArticleRow({
+  empty,
+  children
+}: ISpecialArticleRowProps) {
   return (
     <a style={{ cursor: empty ? 'default' : 'pointer' }}>
-      <SpecialArticleContainer empty={!!empty}>
-        {empty ? <SpecialArticleEmpty /> : children}
-      </SpecialArticleContainer>
+      <SpecialArticleRowContainer empty={!!empty}>
+        {empty ? <SpecialArticleRowEmpty /> : children}
+      </SpecialArticleRowContainer>
     </a>
   );
 }
 
-const SpecialArticleEmpty = styled('article', {
+const SpecialArticleRowEmpty = styled('article', {
   width: 250,
   height: 150,
   borderRadius: 15,
   background: '$light2'
 });
 
-const SpecialArticleContainer = styled('article', {
+const SpecialArticleRowContainer = styled('article', {
   width: 250,
   height: 150,
   borderRadius: 15,
@@ -51,5 +54,5 @@ const SpecialArticleContainer = styled('article', {
   }
 });
 
-SpecialArticle.Title = SpecialArticleTitle;
-SpecialArticle.Image = SpecialArticleImage;
+SpecialArticleRow.Title = SpecialArticleRowTitle;
+SpecialArticleRow.Image = SpecialArticleRowImage;
