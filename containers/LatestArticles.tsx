@@ -3,7 +3,7 @@ import LatestArticle from '../components/Article/LatestArticle';
 import { TypoLabel } from '../components/Common/Typography';
 import { FRAME_PADDING_DEFAULT, FRAME_PADDING_MOBILE } from '../constants/paddings';
 import { styled } from '../stitches.config';
-import ArticleType from '../types/post';
+import ArticleType from '../types/articles';
 
 interface ILatestArticlesProps {
   articles: ArticleType[];
