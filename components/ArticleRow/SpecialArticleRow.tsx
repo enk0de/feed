@@ -36,17 +36,17 @@ const SpecialArticleRowContainer = styled('article', {
   transitionProperty: 'transform,box-shadow',
   transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
   transitionDuration: '200ms',
+  boxSizing: 'border-box',
   variants: {
     empty: {
       false: {
         '&:hover': {
-          outline: '3px solid rgba(0,0,0,.2)'
+          boxShadow: 'rgba(0,0,0,.2) 0 0 0 4px'
         },
         '@bp2': {
           '&:hover': {
             transform: 'translateY(-5px)',
-            boxShadow: '$lightEl6',
-            outline: 'none'
+            boxShadow: '$lightEl6'
           }
         }
       }
