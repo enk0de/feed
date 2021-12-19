@@ -19,7 +19,8 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   globalStyles();
 
   return (
-    <ThemeProvider attribute="class">
+    // <ThemeProvider attribute="class">
+    <>
       <Head>
         <title>hoondevfeed</title>
         <meta name="description" content="Stories of Frontend Engineering" />
@@ -30,6 +31,7 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         {/* <meta property="og:image" content={OgImage.src} /> */}
       </Head>
       {getLayout(<Component {...pageProps} />)}
-    </ThemeProvider>
+    </>
+    // </ThemeProvider>
   );
 }
