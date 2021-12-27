@@ -15,13 +15,15 @@ export default function LatestArticleRowList({ articles }: ILatestArticleRowList
       <TypoLabel type="large" css={{ color: '$dark2' }}>
         최신 아티클
       </TypoLabel>
-      {articles?.map(({ slug, date, title, category }) => (
-        <Link href={`/articles/${slug}`} key={slug}>
-          <a>
-            <LatestArticleRow title={title} category={category} createdAt={date} />
-          </a>
-        </Link>
-      ))}
+      <div>
+        {articles?.map(({ slug, date, title, category }) => (
+          <Link href={`/articles/${slug}`} key={slug} passHref>
+            <a>
+              <LatestArticleRow title={title} category={category} createdAt={date} />
+            </a>
+          </Link>
+        ))}
+      </div>
     </LatestArticleRowListContainer>
   );
 }

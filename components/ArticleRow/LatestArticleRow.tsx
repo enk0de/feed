@@ -14,23 +14,21 @@ export default function LatestArticleRow({
   title
 }: ILatestArticleRowProps) {
   return (
-    <a style={{ cursor: 'pointer' }}>
-      <LatestArticleRowContainer>
-        <DescriptionArea>
-          <TypoLabel type="large" css={{ color: '$dark3' }}>
-            {category}
-          </TypoLabel>
-          <Divider />
-          <TypoLabel type="large" css={{ color: '$dark3' }}>
-            {format(
-              parse(createdAt, 'yyyy-MM-dd hh:mm:ss', new Date()),
-              'yyyy년 M월 d일'
-            )}
-          </TypoLabel>
-        </DescriptionArea>
-        <TypoHeadingH5>{title}</TypoHeadingH5>
-      </LatestArticleRowContainer>
-    </a>
+    <LatestArticleRowContainer>
+      <DescriptionArea>
+        <TypoLabel type="large" css={{ color: '$dark3' }}>
+          {category}
+        </TypoLabel>
+        <Divider />
+        <TypoLabel type="large" css={{ color: '$dark3' }}>
+          {format(
+            parse(createdAt, 'yyyy-MM-dd hh:mm:ss', new Date()),
+            'yyyy년 M월 d일'
+          )}
+        </TypoLabel>
+      </DescriptionArea>
+      <TypoHeadingH5>{title}</TypoHeadingH5>
+    </LatestArticleRowContainer>
   );
 }
 
@@ -39,6 +37,7 @@ const LatestArticleRowContainer = styled('article', {
   flexDirection: 'column',
   gap: 4,
   padding: '15px 0',
+  cursor: 'pointer',
   '&:hover h5': {
     textDecoration: 'underline'
   }
