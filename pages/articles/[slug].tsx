@@ -1,5 +1,6 @@
 import { format, parse } from 'date-fns';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import { ParsedUrlQuery } from 'querystring';
@@ -10,6 +11,7 @@ import { TypoHeadingH1 } from '../../components/Common/Typography';
 import ArticleLayout from '../../components/Layout/ArticleLayout';
 import { getAllArticles, getArticleBySlug } from '../../lib/api';
 import ArticleType from '../../types/articles';
+import ArticleComments from '../../components/Article/ArticleComments';
 
 interface IArticlePageProps {
   title: string;
@@ -21,10 +23,14 @@ interface IArticlePageProps {
 const ArticlePage = ({ content, ...rest }: IArticlePageProps) => {
   return (
     <>
+      <Head>
+        <title>{`${rest.title} - hoondevfeed`}</title>
+      </Head>
       <ArticleHeader {...rest} />
       <ArticleStyleWrapper>
         <MDXRemote {...content} />
       </ArticleStyleWrapper>
+      <ArticleComments />
     </>
   );
 };
