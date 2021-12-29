@@ -13,7 +13,7 @@ interface IIndexProps {
 const Index = ({ articles }: IIndexProps) => {
   return (
     <>
-      <SpecialArticleRowList />
+      {/* <SpecialArticleRowList /> */}
       <LatestArticleRowList articles={articles} />
     </>
   );
