@@ -1,0 +1,200 @@
+---
+title: Micro-Frontends를 위한 Webpack 5 Module Federation
+date: '2021-06-18 15:06:22'
+category: webpack
+thumbnail: { thumbnailSrc }
+draft: false
+---
+
+서비스의 규모가 커질 수록 한 앱에 들어가는 피쳐들이 많아지고, 그로 인해 각각의 피쳐들 사이의 의존성(dependency)가 생기기 마련이다.
+
+이러한 의존성을 제거하기 위해 공통적으로 사용할 것들(작게는 컴포넌트 단위, 크게는 서비스 단위)을 context independent하게 구현해놓고 앱에서 불러와 사용하곤 한다.
+
+분리된 각각의 컴포넌트, 서비스 단위로 따로 개발하여 적용할 수 있지만 수정사항을 반영하려면 앱을 다시 **빌드하고 배포하는 과정**이 필요하다. 아주 작은 단위의 수정사항이 있더라도 **수십분의 배포 시간**을 거쳐야 하는 것이다.
+
+**_🔍 만약..._**
+
+마법같이 각각의 컴포넌트, 서비스 단위가 각각의 빌드를 구성하고 그 빌드를 동적으로 최상단 Host 앱에서 불러와 사용할 수 있다면..? <span class="text-pink-600">**런타임에!?**</span>
+
+Webpack 5의 Module Federation은 그런 마법같은 일을 현실화할 수 있다. 🧙
+
+## Module Federation이란?
+
+[2020년 10월](https://webpack.js.org/blog/2020-10-10-webpack-5-release/)에 공식적으로 릴리즈된 Webpack 5는 Webpack 4로부터 성능 개선 뿐만 아니라 다양한 새로운 기능들이 추가되었다.
+
+Module Federation은 여러 분리된 빌드들이 하나의 앱을 구성할 수 있는 Webpack 5의 새로운 기능이다. 하나의 앱이 **다른 빌드에 있는 코드**를 **동적으로 실행**시킬 수 있는 기술이다.
+
+요즘 프론트엔드계에서 핫한 **Micro-Frontends**의 근간이 되는 기술이기도 하다.
+
+특정 빌드가 <span class="text-green-500">**Remote 앱**</span>이 되고, 그 앱에서 **다른 빌드**들을 동적으로 불러와 사용할 수 있다. Remote는 꼭 특정한 하나의 빌드만 될 수 있는 것은 아니다. Federated된 모든 빌드들이 Remote가 될 수 있다.
+
+즉, **<span class="text-red-600">양방향(Bidirectional)</span>**으로 Module Federation이 가능하다. 예를 들면, A 빌드에서 B 빌드에 있는 코드를 실행시킬 수 있고, B 빌드에서도 A 빌드에 있는 코드를 실행시킬 수 있다는 것이다.
+
+이론적으로는 전방향(Omnidirectional)으로도 가능하다고 한다.
+
+## 사용 예시
+
+### 페이지별 독립적인 배포 프로세스 운영하기
+
+싱글 페이지 애플리케이션에 사용되는 페이지들을 각각의 분리된 빌드로 나누고, Remote 앱에서 그 페이지들을 동적으로 불러와 렌더링한다.
+
+이 방식을 취하면
+
+- 각 페이지들은 모두 **각각 개발되어 배포**한다. 한 페이지의 코드가 변경되었다고 모든 페이지를 빌드할 필요가 없다.
+- Remote 앱은 라우팅이 변경되거나 추가될 때 등 제한적인 상황에만 배포하면 된다.
+
+### 컴포넌트 라이브러리 컨테이너로 사용하기
+
+대부분 공통으로 사용하는 컴포넌트들은 라이브러리화 시켜서 여러 앱들에서 공유받아 사용하는데, 기존에는 공통 컴포넌트들의 변경사항을 반영하기 위해서는 그 컴포넌트를 사용하는 앱을 다시 빌드해야 한다.
+
+공통 컴포넌트만 정의해두는 라이브러리 컨테이너로서 Federate시킨다면
+
+- **서비스 애플리케이션**과 **공통 컴포넌트 라이브러리 컨테이너**를 각각 **분리해서 개발하고 배포하는 프로세스**를 가져갈 수 있다.
+
+## 사용해보기
+
+고맙게도 Webpack에서 수많은 [Module Federation Examples](https://github.com/module-federation/module-federation-examples)를 만들어주었다.
+
+### 레포지토리 Cloning
+
+```bash
+git clone https://github.com/module-federation/module-federation-examples.git
+```
+
+먼저 예시들이 있는 레포지토리를 클론받으면 수많은 예시 프로젝트 폴더들이 있는데, 그중에서 `basic-host-remote` 폴더에 있는 예시를 살펴보자.
+
+### 의존성 패키지 설치
+
+Module Federation 예시들에 있는 모든 프로젝트는 패키지 매니저로 `yarn`을 사용합니다.
+
+```bash
+# 의존성 패키지를 설치합니다.
+yarn
+```
+
+이 예제는 `yarn workspace`를 사용하고 있어 `lerna bootstrap`을 할 필요가 없다. `yarn`만 해줘도 하위 workspace의 의존성 패키지가 함께 설치되기 때문이다.
+
+### 앱 실행
+
+```bash
+yarn start
+```
+
+위 명령어를 입력하여 앱을 실행하면 `localhost:3001` `localhost:3002` 각각 app1, app2가 실행된다.
+
+![실행 화면](./images/module_federation_serve.png)
+
+위 사진처럼 두 개의 빌드(앱)이 실행되는데, 사진에서 보다시피 app1에서 `App 2 Button`을 볼 수 있다. Host 빌드인 app1에서 app2에 정의한 버튼을 Module Federation 기술을 사용하여 가져온 것이다.
+
+## Deep Dive Into Code
+
+### Host 앱의 webpack.config.js
+
+이 예제에서 Host 앱은 `app1`이다. 즉, app1이 Module Federation을 통해 다른 빌드를 동적으로 불러와 사용하고 있는 빌드라고 보면 된다.
+
+`webpack.config.js`를 살펴보자.
+
+```jsx
+devServer: {
+  contentBase: path.join(__dirname, "dist"),
+  port: 3001,
+},
+```
+
+Host 앱인 `app1`은 3001 포트에서 실행된다는 의미이다.
+
+---
+
+```jsx
+const { ModuleFederationPlugin } = require('webpack').container;
+```
+
+상단에 require를 사용하는 구문을 보면, `webpack > container > ModuleFederationPlugin`을 불러오고 있다.
+
+여기서 [ModuleFederationPlugin](https://webpack.js.org/plugins/module-federation-plugin/)은 Webpack의 Module Federation을 개발자가 사용할 때 필요한 High-level 플러그인으로서, 내부적(Low-level)으로 `ContainerPlugin`과 `ContainerReferencePlugin`으로 구성되어 있다.
+
+```jsx
+new ModuleFederationPlugin({
+  name: "app1",
+  remotes: {
+   app2: `app2@${getRemoteEntryUrl(3002)}`,
+  },
+  shared: { react: { singleton: true }, "react-dom": { singleton: true } },
+}),
+```
+
+`ModuleFederationPlugin`을 사용하는 부분을 자세히 살펴보자.
+
+- `name` : 현재 빌드(Container)의 이름 정의
+- `remotes` : 사용할 Remote 빌드의 위치 정의. 여기서 app2는 `app2@http://localhost:3002/remoteEntry.js`임. (app2@ + getRemoteEntryUrl 함수 리턴값)
+- `shared` : 의존성 모듈을 어떻게 공유할지를 정의. `react`와 `react-dom`을 공유
+  - `singleton: true`를 통해 동일한 버전의 react 패키지를 싱글톤으로 공유
+  - [더 많은 shared 프로퍼티에 관련 속성 보러가기](https://webpack.js.org/plugins/module-federation-plugin/#eager)
+
+### Remote 앱의 webpack.config.js
+
+이 예제에서 Remote 앱은 `app2` 하나다. Module Federation을 통해 Host 빌드에서 불러와 사용할 수 있는 빌드라고 보면 된다.
+
+`webpack.config.js`를 살펴보자. (위에서 설명한 부분은 제외)
+
+```jsx
+devServer: {
+  contentBase: path.join(__dirname, "dist"),
+  port: 3002,
+},
+```
+
+Remote 앱인 `app2`는 3002 포트에서 실행된다는 의미이다.
+
+```jsx
+new ModuleFederationPlugin({
+  name: "app2",
+  library: { type: "var", name: "app2" },
+  filename: "remoteEntry.js",
+  exposes: {
+    "./Button": "./src/Button",
+  },
+  shared: { react: { singleton: true }, "react-dom": { singleton: true } },
+}),
+```
+
+- `name` : 현재 빌드(Container)의 이름 정의
+- `library.type` : 라이브러리 타입 ([Webpack 문서 참고](https://webpack.js.org/configuration/output/#outputlibrarytype))
+- `library.name` : 라이브러리 이름
+- `filename` : 외부로 expose할 파일 이름, webpack.config.js에 `output.path` 디렉터리에 대한 상대 경로 기반임
+  - 이 예제에서는 app2의 `Button`을 외부에서 사용할 수 있도록 expose했다.
+- `exposes` : expose될(외부에서 사용할 수 있는) 모듈들 정의
+
+### Host 앱에서 사용한 Remote 앱의 버튼
+
+```jsx
+import React from 'react';
+
+const RemoteButton = React.lazy(() => import('app2/Button'));
+
+const App = () => (
+  <div>
+    <h1>Basic Host-Remote</h1>
+    <h2>App 1</h2>
+    <React.Suspense fallback="Loading Button">
+      <RemoteButton />
+    </React.Suspense>
+  </div>
+);
+
+export default App;
+```
+
+app2에 있는 버튼을 Lazy Load한 뒤, 실제 렌더링 시 `React.Suspense`로 감싸두어 버튼이 불러와질 때까지 `Loading Button`이라는 문구가 출력되게 구현한 예시이다.
+
+## 마치며
+
+Webpack 5의 Module Federaton 기술은 프론트엔드 분야에서 많은 개발자들이 갈망했던 기능인 만큼, 프론트엔드 업계에서 꾸준히 관심을 받을 것으로 예상된다. 찾아보니 Module Federation이 적용된 Remote 앱을 [AWS S3와 같은 클라우드 서버에 저장해두고 동적으로 받아오는 기술](https://medium.com/swlh/deploying-micro-frontends-to-aws-step-by-step-using-react-webpack-5-and-module-federation-3f97f6f1658c)도 있고, 다방면으로 프로덕션에 적용되면 되게 유용하게 사용될 수 있을 것 같다.
+
+하지만 아직 릴리즈된지 얼마 되지 않은 기술이기도 하고, 낯선 기술이라 그런지 실제 프로덕트에 도입하기 전까지 많은 경험들이 누적되어야 할 것 같다.
+
+## 참고
+
+- [https://webpack.js.org/concepts/module-federation/](https://webpack.js.org/concepts/module-federation/)
+- [https://indepth.dev/posts/1173/webpack-5-module-federation-a-game-changer-in-javascript-architecture](https://indepth.dev/posts/1173/webpack-5-module-federation-a-game-changer-in-javascript-architecture)
+- [https://betterprogramming.pub/micro-frontends-using-webpack-5-module-federation-3b97ffb22a0d](https://betterprogramming.pub/micro-frontends-using-webpack-5-module-federation-3b97ffb22a0d)
