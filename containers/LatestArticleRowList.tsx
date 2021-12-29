@@ -17,7 +17,7 @@ export default function LatestArticleRowList({ articles }: ILatestArticleRowList
       </TypoLabel>
       <div>
         {articles?.map(({ slug, date, title, category }) => (
-          <Link href={`/articles/${slug}`} key={slug} passHref>
+          <Link href={`/articles/${category}/${slug}`} key={slug} passHref>
             <a>
               <LatestArticleRow title={title} category={category} createdAt={date} />
             </a>

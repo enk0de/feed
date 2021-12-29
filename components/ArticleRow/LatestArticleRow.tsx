@@ -21,8 +21,9 @@ export default function LatestArticleRow({
         </TypoLabel>
         <Divider />
         <TypoLabel type="large" css={{ color: '$dark3' }}>
+          {console.log(createdAt)}
           {format(
-            parse(createdAt, 'yyyy-MM-dd hh:mm:ss', new Date()),
+            parse(createdAt, 'yyyy-MM-dd HH:mm:ss', new Date()),
             'yyyy년 M월 d일'
           )}
         </TypoLabel>

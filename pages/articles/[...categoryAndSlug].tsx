@@ -9,9 +9,14 @@ import ArticleHeader from '../../components/Article/ArticleHeader';
 import ArticleStyleWrapper from '../../components/Common/ArticleStyleWrapper';
 import { TypoHeadingH1 } from '../../components/Common/Typography';
 import ArticleLayout from '../../components/Layout/ArticleLayout';
-import { getAllArticles, getArticleBySlug } from '../../lib/api';
+import {
+  articlesDirectory,
+  getAllArticles,
+  getArticleByAbsolutePath
+} from '../../lib/api';
 import ArticleType from '../../types/articles';
 import ArticleComments from '../../components/Article/ArticleComments';
+import { join } from 'path';
 
 interface IArticlePageProps {
   title: string;
@@ -39,11 +44,15 @@ ArticlePage.getLayout = function (page: ReactElement) {
   return <ArticleLayout>{page}</ArticleLayout>;
 };
 
-type GetStaticPropsParams = ParsedUrlQuery & Pick<ArticleType, 'slug'>;
+type GetStaticPropsParams = ParsedUrlQuery & { categoryAndSlug: string[] };
 
 export const getStaticProps: GetStaticProps<IArticlePageProps, GetStaticPropsParams> =
   async ({ params }) => {
-    const article = getArticleBySlug(params!.slug, [
+    console.log(params);
+    const [category, slug] = params!.categoryAndSlug;
+    const path = join(articlesDirectory, category, `${slug}.mdx`);
+
+    const article = getArticleByAbsolutePath(path, [
       'title',
       'category',
       'date',
@@ -56,7 +65,7 @@ export const getStaticProps: GetStaticProps<IArticlePageProps, GetStaticPropsPar
         title: article.title,
         category: article.category,
         date: format(
-          parse(article.date, 'yyyy-MM-dd hh:mm:ss', new Date()),
+          parse(article.date, 'yyyy-MM-dd HH:mm:ss', new Date()),
           'yyyy년 M월 d일'
         ),
         content: mdxSource
@@ -65,12 +74,12 @@ export const getStaticProps: GetStaticProps<IArticlePageProps, GetStaticPropsPar
   };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articles = getAllArticles(['slug', 'date']);
+  const articles = getAllArticles(['category', 'slug', 'date']);
 
   return {
     paths: articles.map((article) => {
       return {
-        params: { ...article }
+        params: { categoryAndSlug: [article.category, article.slug] }
       };
     }),
     fallback: false
