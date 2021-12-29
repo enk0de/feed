@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { styled } from '../../stitches.config';
 
 export default function ArticleComments() {
   const ref = useRef<HTMLDivElement>(null);
@@ -29,5 +30,11 @@ export default function ArticleComments() {
     };
   }, []);
 
-  return <div className="article-comments" ref={ref} />;
+  return <ArticleCommentsContainer className="article-comments" ref={ref} />;
 }
+
+const ArticleCommentsContainer = styled('div', {
+  '.utterances': {
+    maxWidth: '100%'
+  }
+});
