@@ -1,12 +1,9 @@
 import fs from 'fs';
 import { join, basename } from 'path';
 import matter from 'gray-matter';
+import glob from 'glob';
 
 export const articlesDirectory = join(process.cwd(), '_articles');
-
-export function getArticleSlugs() {
-  return fs.readdirSync(articlesDirectory);
-}
 
 export function getArticleByAbsolutePath(path: string, fields: string[] = []) {
   const realSlug = basename(path).replace(/\.mdx$/, '');
@@ -30,25 +27,20 @@ export function getArticleByAbsolutePath(path: string, fields: string[] = []) {
   return items;
 }
 
-function getAllAbsoluteArticles(directory: string) {
-  let files: string[] = [];
+function getAbsoluteArticles(directory: string, category?: string) {
+  const categoryGlobPattern = category == null ? '**' : category;
 
-  fs.readdirSync(directory).forEach((file) => {
-    const absolutePath = join(directory, file);
+  const files = glob
+    .sync(`${directory}/${categoryGlobPattern}/*.mdx`)
+    .reduce<string[]>((acc, cur) => [...acc, cur], []);
 
-    if (fs.statSync(absolutePath).isDirectory()) {
-      files = [...files, ...getAllAbsoluteArticles(absolutePath)];
-    } else {
-      files.push(absolutePath);
-    }
-  });
   return files;
 }
 
-export function getAllArticles(fields: string[] = []) {
+export function getArticles(fields: string[] = [], category?: string) {
   // const slugs = getArticleSlugs();
-  const slugs = getAllAbsoluteArticles(articlesDirectory);
-  const articles = slugs
+  const paths = getAbsoluteArticles(articlesDirectory, category);
+  const articles = paths
     .map((slug) => getArticleByAbsolutePath(slug, fields))
     // sort articles by date in descending order
     .sort((article1, article2) => (article1.date > article2.date ? -1 : 1));

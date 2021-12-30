@@ -12,7 +12,7 @@ import ArticleStyleWrapper from '../../components/Common/ArticleStyleWrapper';
 import ArticleLayout from '../../components/Layout/ArticleLayout';
 import {
   articlesDirectory,
-  getAllArticles,
+  getArticles,
   getArticleByAbsolutePath
 } from '../../lib/api';
 
@@ -46,7 +46,6 @@ type GetStaticPropsParams = ParsedUrlQuery & { categoryAndSlug: string[] };
 
 export const getStaticProps: GetStaticProps<IArticlePageProps, GetStaticPropsParams> =
   async ({ params }) => {
-    console.log(params);
     const [category, slug] = params!.categoryAndSlug;
     const path = join(articlesDirectory, category, `${slug}.mdx`);
 
@@ -72,7 +71,7 @@ export const getStaticProps: GetStaticProps<IArticlePageProps, GetStaticPropsPar
   };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const articles = getAllArticles(['category', 'slug', 'date']);
+  const articles = getArticles(['category', 'slug', 'date']);
 
   return {
     paths: articles.map((article) => {
