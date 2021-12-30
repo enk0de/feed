@@ -18,7 +18,7 @@ const ArticleStyleWrapper = styled('div', {
   h2: TypoHeadingH4BaseStyleObj,
   h3: TypoHeadingH5BaseStyleObj,
   h4: TypoHeadingH6BaseStyleObj,
-  'h3,h4,h5,h6': {
+  'h1,h2,h3,h4,h5,h6': {
     marginBottom: 16,
     marginTop: 24
   },
@@ -45,11 +45,32 @@ const ArticleStyleWrapper = styled('div', {
   blockquote: {
     borderLeft: '4px solid',
     borderLeftColor: '$dark3',
-    '> p': { color: '$dark2' },
+    '> p': { color: '$dark3' },
     marginTop: 0,
     marginRight: 0,
     marginLeft: 0,
     paddingLeft: 16
+  },
+  'code,kbd,pre,samp': {
+    fontFamily: 'monospace,monospace',
+    fontSize: '1em'
+  },
+  'tt,code': {
+    fontFamily:
+      'ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace',
+    fontSize: '12px'
+  },
+  pre: {
+    marginTop: 0,
+    marginBottom: 0,
+    fontFamily:
+      'ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace',
+    fontSize: '12px',
+    wordWrap: 'normal'
+  },
+  'p,blockquote,ul,ol,dl,table,pre,details': {
+    marginTop: 0,
+    marginBottom: '16px'
   }
 });
 
