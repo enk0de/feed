@@ -24,11 +24,11 @@ const ArticleStyleWrapper = styled('div', {
   },
   'ol,ul': {
     paddingLeft: '1.4em',
-    marginBottom: 16
+    marginBottom: 16,
+    listStyle: 'revert'
   },
   li: {
-    margin: '4px 0',
-    listStyle: 'outside'
+    margin: '4px 0'
   },
   // children ol, ul
   'li>ol,li>ul': {
