@@ -64,8 +64,7 @@ const ChipContainer = styled(
         true: {
           pointerEvents: 'none',
           backgroundColor: '$dark1',
-          color: '$light4',
-          fontWeight: 'bold'
+          color: '$light4'
         },
         false: {
           backgroundColor: '$light2',
