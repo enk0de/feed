@@ -31,7 +31,16 @@ export default function LatestArticleRowList({
   return (
     <LatestArticleRowListContainer>
       <HeaderArea>
-        <TypoLabel type="large" css={{ color: '$dark2' }}>
+        <TypoLabel
+          type="large"
+          css={{
+            color: '$dark2',
+            display: 'none',
+            '@bp2': {
+              display: 'revert'
+            }
+          }}
+        >
           최신 아티클
         </TypoLabel>
         <Chip.Set value={filteredCategory} onChange={handleChipClick}>

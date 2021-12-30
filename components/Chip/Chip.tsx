@@ -41,6 +41,7 @@ Chip.Set = ChipSet;
 
 const ChipSetContainer = styled('ul', {
   display: 'flex',
+  overflow: 'scroll',
   spaceX: 8
 });
 
@@ -51,6 +52,7 @@ const ChipContainer = styled(
     display: 'inline-block',
     padding: '3px 10px',
     cursor: 'pointer',
+    flexShrink: 0,
     '&:hover': {
       backgroundColor: '$light3',
       color: '$dark2'
