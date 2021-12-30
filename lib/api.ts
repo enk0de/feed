@@ -46,3 +46,7 @@ export function getArticles(fields: string[] = [], category?: string) {
     .sort((article1, article2) => (article1.date > article2.date ? -1 : 1));
   return articles;
 }
+
+export function getCategories() {
+  return fs.readdirSync(articlesDirectory);
+}

@@ -2,17 +2,18 @@ import { GetServerSideProps, GetStaticProps } from 'next';
 import { ReactElement } from 'react';
 import MainLayout from '../components/Layout/MainLayout';
 import LatestArticleRowList from '../containers/LatestArticleRowList';
-import { getArticles } from '../lib/api';
+import { getArticles, getCategories } from '../lib/api';
 import ArticleType from '../types/articles';
 
 interface IIndexProps {
   articles: ArticleType[];
+  categories: string[];
 }
 
-const Index = ({ articles }: IIndexProps) => {
+const Index = ({ articles, categories }: IIndexProps) => {
   return (
     <>
-      <LatestArticleRowList articles={articles} />
+      <LatestArticleRowList articles={articles} categories={categories} />
     </>
   );
 };
@@ -22,11 +23,13 @@ Index.getLayout = function (page: ReactElement) {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const category: string | undefined = (query?.category as string) || undefined;
-  const articles = getArticles(['date', 'slug', 'title', 'category'], category);
+  const filteredCategory: string | undefined = (query?.category as string) || undefined;
+  const articles = getArticles(['date', 'slug', 'title', 'category'], filteredCategory);
+
+  const categories = getCategories();
 
   return {
-    props: { articles }
+    props: { articles, categories }
   };
 };
 

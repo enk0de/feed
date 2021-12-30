@@ -11,11 +11,15 @@ import ArticleType from '../types/articles';
 
 interface ILatestArticleRowListProps {
   articles: ArticleType[];
+  categories: string[];
 }
 
-export default function LatestArticleRowList({ articles }: ILatestArticleRowListProps) {
+export default function LatestArticleRowList({
+  articles,
+  categories
+}: ILatestArticleRowListProps) {
   const router = useRouter();
-  const category = (router.query?.category as string) ?? null;
+  const filteredCategory = (router.query?.category as string) ?? null;
   const handleChipClick: IChipSetProps<string>['onChange'] = ({ value }) => {
     if (value == null) {
       router.push(router.basePath);
@@ -30,11 +34,13 @@ export default function LatestArticleRowList({ articles }: ILatestArticleRowList
         <TypoLabel type="large" css={{ color: '$dark2' }}>
           최신 아티클
         </TypoLabel>
-        <Chip.Set value={category} onChange={handleChipClick}>
+        <Chip.Set value={filteredCategory} onChange={handleChipClick}>
           <Chip value={null}>전체</Chip>
-          <Chip disabled>하이</Chip>
-          <Chip value="story">하이</Chip>
-          <Chip value="77">하이</Chip>
+          {categories.map((category) => (
+            <Chip value={category} key={category}>
+              {category}
+            </Chip>
+          ))}
         </Chip.Set>
       </HeaderArea>
       <div>
