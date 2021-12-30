@@ -6,7 +6,7 @@ import { IChipProps, IChipSetProps } from './interface';
 
 export default function Chip<T>({ value, disabled, children }: IChipProps<T>) {
   const context = useContext(ChipSetContext);
-  const selected = context?.value ? context?.value === value : false;
+  const selected = context?.value !== undefined ? context?.value === value : false;
 
   const handleChipClick = () => {
     context?.onChange?.({ value });
