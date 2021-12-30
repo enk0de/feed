@@ -53,7 +53,8 @@ const ArticleStyleWrapper = styled('div', {
   },
   'code,kbd,pre,samp': {
     fontFamily: 'monospace,monospace',
-    fontSize: '1em'
+    fontSize: '1em',
+    overflow: 'scroll'
   },
   'tt,code': {
     fontFamily:
