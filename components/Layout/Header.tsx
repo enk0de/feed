@@ -62,8 +62,8 @@ const HeaderContainer = styled('header', {
   '@bp2': {
     padding: `20px ${FRAME_PADDING_DEFAULT}px`
   },
-  background: 'white',
-  backdropFilter: 'blur(40px)',
+  background: 'rgba(255, 255, 255, 0.8)',
+  backdropFilter: 'blur(5px)',
   variants: {
     scrolled: {
       true: {
