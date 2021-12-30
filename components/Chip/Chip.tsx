@@ -4,7 +4,7 @@ import { TypoLabelLargeBaseStyleObj } from '../Common/Typography';
 import { ChipSetContext } from './context';
 import { IChipProps, IChipSetProps } from './interface';
 
-export default function Chip({ value, disabled, children }: IChipProps) {
+export default function Chip<T>({ value, disabled, children }: IChipProps<T>) {
   const context = useContext(ChipSetContext);
   const selected = context?.value ? context?.value === value : false;
 
@@ -23,7 +23,7 @@ export default function Chip({ value, disabled, children }: IChipProps) {
   );
 }
 
-function ChipSet({ value, disabled, onChange, children }: IChipSetProps) {
+function ChipSet<T>({ value, disabled, onChange, children }: IChipSetProps<T>) {
   return (
     <ChipSetContext.Provider
       value={{
