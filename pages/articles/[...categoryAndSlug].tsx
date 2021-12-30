@@ -1,22 +1,20 @@
 import { format, parse } from 'date-fns';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import Head from 'next/head';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
+import Head from 'next/head';
+import { join } from 'path';
 import { ParsedUrlQuery } from 'querystring';
 import React, { ReactElement } from 'react';
+import ArticleComments from '../../components/Article/ArticleComments';
 import ArticleHeader from '../../components/Article/ArticleHeader';
 import ArticleStyleWrapper from '../../components/Common/ArticleStyleWrapper';
-import { TypoHeadingH1 } from '../../components/Common/Typography';
 import ArticleLayout from '../../components/Layout/ArticleLayout';
 import {
   articlesDirectory,
   getAllArticles,
   getArticleByAbsolutePath
 } from '../../lib/api';
-import ArticleType from '../../types/articles';
-import ArticleComments from '../../components/Article/ArticleComments';
-import { join } from 'path';
 
 interface IArticlePageProps {
   title: string;

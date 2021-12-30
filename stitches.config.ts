@@ -1,5 +1,4 @@
 import { createStitches, PropertyValue } from '@stitches/react';
-import { NONAME } from 'dns';
 import COLORS from './constants/colors';
 
 export const {
