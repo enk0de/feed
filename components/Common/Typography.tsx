@@ -51,7 +51,7 @@ export const TypoHeadingH6 = styled('h6', TypoHeadingH6BaseStyleObj);
 export const TypoLead = styled('p', {
   fontWeight: 'bold',
   fontSize: 14,
-  lineHeight: '24px'
+  lineHeight: '28px'
 });
 
 export const TypoSmall = styled('p', {
@@ -68,12 +68,12 @@ export const TypoTiny = styled('p', {
 
 export const TypoBody14BaseStyleObj = {
   fontSize: 14,
-  lineHeight: '24px'
+  lineHeight: '28px'
 };
 
 export const TypoBody16BaseStyleObj = {
   fontSize: 16,
-  lineHeight: '24px'
+  lineHeight: '28px'
 };
 
 export const TypoBody = styled('p', {
@@ -109,7 +109,7 @@ export const TypoLabelMediumBaseStyleObj = {
 
 export const TypoLabelLargeBaseStyleObj = {
   fontSize: 14,
-  lineHeight: '24px'
+  lineHeight: '28px'
 };
 
 export const TypoLabel = styled('span', {
