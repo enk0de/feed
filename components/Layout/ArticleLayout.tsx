@@ -19,12 +19,11 @@ export default function ArticleLayout({ children }: IArticleLayoutProps) {
 }
 
 const ArticleLayoutContentsWrapper = styled('main', {
-  maxWidth: 1140,
+  maxWidth: 700,
   width: '100%',
   padding: `30px ${FRAME_PADDING_MOBILE}px`,
   margin: '0 auto',
   marginTop: 64,
-  boxSizing: 'border-box',
   '@bp2': {
     padding: `30px ${FRAME_PADDING_DEFAULT}px`,
     marginTop: 80
