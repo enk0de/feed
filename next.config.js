@@ -6,27 +6,27 @@ module.exports = withMDX({
     return [
       {
         source: '/angular/:path*',
-        destination: '/articles/angular/:path*',
+        destination: '/articles/Angular/:path*',
         permanent: true
       },
       {
         source: '/essay/:path*',
-        destination: '/articles/essay/:path*',
+        destination: '/articles/에세이/:path*',
         permanent: true
       },
       {
         source: '/story/:path*',
-        destination: '/articles/story/:path*',
+        destination: '/articles/잡다한%20이야기/:path*',
         permanent: true
       },
       {
         source: '/web/:path*',
-        destination: '/articles/web/:path*',
+        destination: '/articles/웹/:path*',
         permanent: true
       },
       {
         source: '/webpack/:path*',
-        destination: '/articles/webpack/:path*',
+        destination: '/articles/Webpack/:path*',
         permanent: true
       }
     ];
