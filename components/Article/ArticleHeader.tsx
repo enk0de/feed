@@ -1,5 +1,6 @@
 import { styled } from '../../stitches.config';
 import { TypoHeadingH1, TypoLabelLargeBaseStyleObj } from '../Common/Typography';
+import { Divider } from '../Common/Divider';
 
 interface IArticleHeaderProps {
   title: string;
@@ -26,7 +27,7 @@ export default function ArticleHeader({ title, category, date }: IArticleHeaderP
       </TypoHeadingH1>
       <DescriptionArea>
         <DescriptionItem>{category}</DescriptionItem>
-        <DescriptionItem css={{ color: '$light0' }}>|</DescriptionItem>
+        <Divider />
         <DescriptionItem>{date}</DescriptionItem>
       </DescriptionArea>
     </ArticleHeaderContainer>
@@ -40,6 +41,7 @@ const ArticleHeaderContainer = styled('div', {
 const DescriptionArea = styled('div', {
   display: 'flex',
   justifyContent: 'center',
+  alignItems: 'center',
   '> * + *': {
     marginLeft: 10
   }

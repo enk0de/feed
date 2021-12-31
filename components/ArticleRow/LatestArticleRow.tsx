@@ -1,6 +1,7 @@
 import { format, parse } from 'date-fns';
 import { styled } from '../../stitches.config';
 import { TypoHeadingH5, TypoLabel } from '../Common/Typography';
+import { Divider } from '../Common/Divider';
 
 interface ILatestArticleRowProps {
   category: string;
@@ -41,12 +42,6 @@ const LatestArticleRowContainer = styled('article', {
   '&:hover h5': {
     textDecoration: 'underline'
   }
-});
-
-const Divider = styled('div', {
-  width: '1px',
-  height: '8px',
-  background: '$light0'
 });
 
 const DescriptionArea = styled('div', {
