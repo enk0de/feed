@@ -105,7 +105,7 @@ export const globalStyles = globalCss({
       padding: 0,
       border: 0,
       fontSize: '100%',
-      font: 'inherit',
+      fontFamily: 'inherit',
       verticalAlign: 'baseline'
     },
   'html,body,*': {
