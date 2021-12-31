@@ -72,6 +72,9 @@ const ArticleStyleWrapper = styled('div', {
   'p,blockquote,ul,ol,dl,table,pre,details': {
     marginTop: 0,
     marginBottom: '16px'
+  },
+  img: {
+    width: '100%'
   }
 });
 

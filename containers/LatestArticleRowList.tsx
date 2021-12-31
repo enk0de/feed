@@ -67,11 +67,11 @@ export default function LatestArticleRowList({
 
 const LatestArticleRowListContainer = styled('section', {
   spaceY: 12,
-  padding: `12px ${FRAME_PADDING_MOBILE}px`,
+  padding: `12px ${FRAME_PADDING_MOBILE}px 36px`,
   margin: '0 auto',
   maxWidth: '1140px',
   '@bp2': {
-    padding: `12px ${FRAME_PADDING_DEFAULT}px`
+    padding: `12px ${FRAME_PADDING_DEFAULT}px 36px`
   },
   boxSizing: 'border-box'
 });
