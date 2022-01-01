@@ -1,7 +1,7 @@
 import { CSS } from '@stitches/react';
 import { StyledComponent } from '@stitches/react/types/styled-component';
 import { ReactNode, UIEvent, useCallback, useEffect, useRef, useState } from 'react';
-import { styled } from '../../stitches.config';
+import { styled } from '../stitches.config';
 
 interface IHorizontalScrollShadowerProps {
   containerStyle?: CSS;

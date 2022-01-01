@@ -1,6 +1,6 @@
-import { FC, useCallback, useContext, useState } from 'react';
+import { useContext } from 'react';
 import { styled } from '../../stitches.config';
-import withHorizontalScrollShadower from '../Common/HorizontalScrollShadower';
+import withHorizontalScrollShadower from '../../hocs/withHorizontalScrollShadower';
 import { TypoLabelLargeBaseStyleObj } from '../Common/Typography';
 import { ChipSetContext } from './context';
 import { IChipProps, IChipSetProps } from './interface';
