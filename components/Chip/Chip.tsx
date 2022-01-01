@@ -1,5 +1,6 @@
 import { FC, useCallback, useContext, useState } from 'react';
 import { styled } from '../../stitches.config';
+import withHorizontalScrollShadower from '../Common/HorizontalScrollShadower';
 import { TypoLabelLargeBaseStyleObj } from '../Common/Typography';
 import { ChipSetContext } from './context';
 import { IChipProps, IChipSetProps } from './interface';
@@ -32,23 +33,24 @@ function ChipSet<T>({ value, disabled, onChange, children }: IChipSetProps<T>) {
         onChange
       }}
     >
-      <ChipSetContainer>{children}</ChipSetContainer>
+      <ChipSetContainer scrollAreaStyle={{ spaceX: 8 }}>{children}</ChipSetContainer>
     </ChipSetContext.Provider>
   );
 }
 
 Chip.Set = ChipSet;
 
-const ChipSetContainer = styled('ul', {
-  display: 'flex',
-  overflow: 'scroll',
-  spaceX: 8,
+const _ChipSetContainer = styled('ul', {
+  position: 'relative',
+  overflow: 'hidden',
   '-ms-overflow-style': 'none',
   'scrollbar-width': 'none',
   '&::-webkit-scrollbar': {
     display: 'none'
   }
 });
+
+const ChipSetContainer = withHorizontalScrollShadower(_ChipSetContainer);
 
 const ChipContainer = styled(
   'li',
