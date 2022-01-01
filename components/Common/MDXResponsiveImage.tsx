@@ -15,5 +15,6 @@ export default function MDXResponsiveImage(props: ImageProps) {
 }
 
 const ResponsiveImageStyle = css({
-  borderRadius: 10
+  borderRadius: 10,
+  transition: '0.3s'
 });
