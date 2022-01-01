@@ -48,11 +48,11 @@ CSS, 이미지, 동영상 등 필요한 리소스를 다운로드 받는다.
 
 ## 브라우저의 주요 구성 요소
 
-![](../../assets/browser-detail.png)
+![](/assets/articles/browser-detail.png)
 
 ### 유저 인터페이스(User Interface)
 
-![](../../assets/browser-ui.png)브라우저에서 웹 페이지를 제외한 나머지, 사용자가 인터렉션 할 수 있는 영역
+![](/assets/articles/browser-ui.png)브라우저에서 웹 페이지를 제외한 나머지, 사용자가 인터렉션 할 수 있는 영역
 
 ### 브라우저 엔진(Browser Engine)
 
@@ -94,16 +94,8 @@ HTTP 요청과 같은 네트워크 요청에 사용된다.
 
 ### 렌더링 엔진의 동작 과정
 
-![https://blog.kakaocdn.net/dn/dOmCi0/btqFbBsXG6h/IjLkLHratK8GQZXnAybNxK/img.png](https://blog.kakaocdn.net/dn/dOmCi0/btqFbBsXG6h/IjLkLHratK8GQZXnAybNxK/img.png)
-
-출처 : 네이버 D2
-
 1. HTML 문서를 파싱하고 변환하여 `DOM(Document Object Model) 트리`를 생성한다.
 2. 외부 CSS 파일과 함께 인라인 스타일 요소를 파싱하고 변환하여 `CSSOM(CSS Object Model) 트리`를 생성한다.
 3. DOM 트리와 CSSOM 트리를 이용하여 `렌더 트리`를 생성한다.
 4. 렌더 트리의 생성이 종료되면, 렌더 트리의 각 노드들을 정확한 위치에 **배치**하고 다양한 **값을 계산**한다.
 5. 브라우저의 실제 화면에 **그리기** 과정을 한다.
-
-![https://blog.kakaocdn.net/dn/uDNO8/btqFaN8WMA0/BWX6nkJrWpqGFee4TWzyN0/img.png](https://blog.kakaocdn.net/dn/uDNO8/btqFaN8WMA0/BWX6nkJrWpqGFee4TWzyN0/img.png)
-
-출처 : 네이버 D2
