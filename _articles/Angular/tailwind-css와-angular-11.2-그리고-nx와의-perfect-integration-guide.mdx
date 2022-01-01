@@ -46,13 +46,13 @@ Angular에서 공식적으로 제공하는 Tailwind를 완벽하게 Integration�
 3. TailwindCSS 적용하기!
    **[주의]** TailwindCSS application이 적용된 스타일 파일은 반드시 angular.json에 해당하는 앱의 styles 항목에 포함되어 있어야 합니다.
    1. scss 파일에서
-      ```
+      ```css
       @import 'tailwindcss/base';
       @import 'tailwindcss/components';
       @import 'tailwindcss/utilities';
       ```
    2. css 파일에서
-      ```
+      ```css
       @tailwind base;
       @tailwind components;
       @tailwind utility;
@@ -68,11 +68,11 @@ Nx Workspace를 사용함에 따라 앱 마다 tailwind.config.js가 적용이 �
 
 여러모로 Angular의 공식 지원으로 인해 편해진 점이 많은 것 같다.
 
-## :dagger: 혹시라도 NX 관련하여 빌드에 문제가 생긴다면..!
+## 🗡 혹시라도 NX 관련하여 빌드에 문제가 생긴다면..!
 
 아래의 과정을 따르시면 됩니다!
 
-1. rm -rf node_modules
-2. npm cache verify
-3. npm i @nrwl/cli -g
-4. npm i
+1. `rm -rf node_modules`
+2. `npm cache verify`
+3. `npm i @nrwl/cli -g`
+4. `npm i`
