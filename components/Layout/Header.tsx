@@ -64,6 +64,7 @@ const HeaderContainer = styled('header', {
   },
   background: 'rgba(255, 255, 255, 0.8)',
   backdropFilter: 'blur(5px)',
+  zIndex: 999,
   variants: {
     scrolled: {
       true: {
