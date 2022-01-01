@@ -3,7 +3,6 @@ import {
   SyntaxHighlighterProps
 } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import { TypoBody14BaseStyleObj } from '../Common/Typography';
 
 export default function ArticleCodeBlock({
   className,

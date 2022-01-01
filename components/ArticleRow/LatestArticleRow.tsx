@@ -1,5 +1,5 @@
 import { format, parse } from 'date-fns';
-import { styled } from '../../stitches.config';
+import { keyframes, styled } from '../../stitches.config';
 import {
   TypoHeadingH5,
   TypoLabel,
@@ -39,6 +39,18 @@ export default function LatestArticleRow({
   );
 }
 
+const NewBadgeKeyframe = keyframes({
+  '0%': {
+    background: '$blue3'
+  },
+  '50%': {
+    background: '$primaryDefault'
+  },
+  '100%': {
+    background: '$blue3'
+  }
+});
+
 const NewBadge = styled(
   'sup',
   {
@@ -48,7 +60,8 @@ const NewBadge = styled(
     height: 6,
     background: '$primaryDefault',
     borderRadius: '100%',
-    marginLeft: 4
+    marginLeft: 4,
+    animation: `${NewBadgeKeyframe} 2s infinite`
   },
   TypoLabelLargeBaseStyleObj
 );
