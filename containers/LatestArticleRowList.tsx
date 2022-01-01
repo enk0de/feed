@@ -1,8 +1,10 @@
+import { differenceInCalendarDays, format, parse } from 'date-fns';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import LatestArticleRow from '../components/ArticleRow/LatestArticleRow';
 import { IChipSetProps } from '../components/Chip/interface';
 import { TypoLabel } from '../components/Common/Typography';
+import { ARTICLE_NEW_DATE } from '../constants/date';
 import { FRAME_PADDING_DEFAULT, FRAME_PADDING_MOBILE } from '../constants/paddings';
 import { styled } from '../stitches.config';
 import ArticleType from '../types/articles';
@@ -49,13 +51,25 @@ export default function LatestArticleRowList({
         />
       </HeaderArea>
       <div>
-        {articles.map(({ slug, date, title, category }) => (
-          <Link href={`/articles/${category}/${slug}`} key={slug} passHref>
-            <a>
-              <LatestArticleRow title={title} category={category} createdAt={date} />
-            </a>
-          </Link>
-        ))}
+        {articles.map(({ slug, date, title, category }) => {
+          const parsedDate = parse(date, 'yyyy-MM-dd HH:mm:ss', new Date());
+          const formattedDate = format(parsedDate, 'yyyy년 M월 d일');
+          const isNew =
+            differenceInCalendarDays(new Date(), parsedDate) <= ARTICLE_NEW_DATE;
+
+          return (
+            <Link href={`/articles/${category}/${slug}`} key={slug} passHref>
+              <a>
+                <LatestArticleRow
+                  title={title}
+                  category={category}
+                  createdAt={formattedDate}
+                  isNew={isNew}
+                />
+              </a>
+            </Link>
+          );
+        })}
       </div>
     </LatestArticleRowListContainer>
   );

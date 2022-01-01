@@ -1,18 +1,24 @@
 import { format, parse } from 'date-fns';
 import { styled } from '../../stitches.config';
-import { TypoHeadingH5, TypoLabel } from '../Common/Typography';
+import {
+  TypoHeadingH5,
+  TypoLabel,
+  TypoLabelLargeBaseStyleObj
+} from '../Common/Typography';
 import { Divider } from '../Common/Divider';
 
 interface ILatestArticleRowProps {
   category: string;
   createdAt: string;
   title: string;
+  isNew?: boolean;
 }
 
 export default function LatestArticleRow({
   category,
   createdAt,
-  title
+  title,
+  isNew
 }: ILatestArticleRowProps) {
   return (
     <LatestArticleRowContainer>
@@ -22,16 +28,30 @@ export default function LatestArticleRow({
         </TypoLabel>
         <Divider />
         <TypoLabel type="large" css={{ color: '$dark3' }}>
-          {format(
-            parse(createdAt, 'yyyy-MM-dd HH:mm:ss', new Date()),
-            'yyyy년 M월 d일'
-          )}
+          {createdAt}
         </TypoLabel>
       </DescriptionArea>
-      <TypoHeadingH5>{title}</TypoHeadingH5>
+      <TypoHeadingH5>
+        {title}
+        {isNew ? <NewBadge /> : null}
+      </TypoHeadingH5>
     </LatestArticleRowContainer>
   );
 }
+
+const NewBadge = styled(
+  'sup',
+  {
+    display: 'inline-block',
+    verticalAlign: 'super',
+    width: 6,
+    height: 6,
+    background: '$primaryDefault',
+    borderRadius: '100%',
+    marginLeft: 4
+  },
+  TypoLabelLargeBaseStyleObj
+);
 
 const LatestArticleRowContainer = styled('article', {
   display: 'flex',
