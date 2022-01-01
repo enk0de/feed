@@ -52,6 +52,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gray-matter", "npm:4.0.3"],
             ["next", "virtual:6722c959ba35b52fd68e1b860c7656e03ce0b8c6291894bc8aab05ae124e7fcd5d0befe81623d19f8e375b3acc104ea5ed30d062ede309eb7780a31fd79f0747#npm:12.0.3"],
             ["next-mdx-remote", "virtual:6722c959ba35b52fd68e1b860c7656e03ce0b8c6291894bc8aab05ae124e7fcd5d0befe81623d19f8e375b3acc104ea5ed30d062ede309eb7780a31fd79f0747#npm:3.0.8"],
+            ["next-seo", "virtual:6722c959ba35b52fd68e1b860c7656e03ce0b8c6291894bc8aab05ae124e7fcd5d0befe81623d19f8e375b3acc104ea5ed30d062ede309eb7780a31fd79f0747#npm:4.28.1"],
             ["next-themes", "virtual:6722c959ba35b52fd68e1b860c7656e03ce0b8c6291894bc8aab05ae124e7fcd5d0befe81623d19f8e375b3acc104ea5ed30d062ede309eb7780a31fd79f0747#npm:0.0.15"],
             ["prettier", "npm:2.4.1"],
             ["react", "npm:17.0.2"],
@@ -3693,6 +3694,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["gray-matter", "npm:4.0.3"],
             ["next", "virtual:6722c959ba35b52fd68e1b860c7656e03ce0b8c6291894bc8aab05ae124e7fcd5d0befe81623d19f8e375b3acc104ea5ed30d062ede309eb7780a31fd79f0747#npm:12.0.3"],
             ["next-mdx-remote", "virtual:6722c959ba35b52fd68e1b860c7656e03ce0b8c6291894bc8aab05ae124e7fcd5d0befe81623d19f8e375b3acc104ea5ed30d062ede309eb7780a31fd79f0747#npm:3.0.8"],
+            ["next-seo", "virtual:6722c959ba35b52fd68e1b860c7656e03ce0b8c6291894bc8aab05ae124e7fcd5d0befe81623d19f8e375b3acc104ea5ed30d062ede309eb7780a31fd79f0747#npm:4.28.1"],
             ["next-themes", "virtual:6722c959ba35b52fd68e1b860c7656e03ce0b8c6291894bc8aab05ae124e7fcd5d0befe81623d19f8e375b3acc104ea5ed30d062ede309eb7780a31fd79f0747#npm:0.0.15"],
             ["prettier", "npm:2.4.1"],
             ["react", "npm:17.0.2"],
@@ -5596,6 +5598,36 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [
             "@types/react-dom",
             "@types/react",
+            "react-dom",
+            "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["next-seo", [
+        ["npm:4.28.1", {
+          "packageLocation": "./.yarn/cache/next-seo-npm-4.28.1-63c1587bd7-4f845275b8.zip/node_modules/next-seo/",
+          "packageDependencies": [
+            ["next-seo", "npm:4.28.1"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:6722c959ba35b52fd68e1b860c7656e03ce0b8c6291894bc8aab05ae124e7fcd5d0befe81623d19f8e375b3acc104ea5ed30d062ede309eb7780a31fd79f0747#npm:4.28.1", {
+          "packageLocation": "./.yarn/__virtual__/next-seo-virtual-3c6b7cc924/0/cache/next-seo-npm-4.28.1-63c1587bd7-4f845275b8.zip/node_modules/next-seo/",
+          "packageDependencies": [
+            ["next-seo", "virtual:6722c959ba35b52fd68e1b860c7656e03ce0b8c6291894bc8aab05ae124e7fcd5d0befe81623d19f8e375b3acc104ea5ed30d062ede309eb7780a31fd79f0747#npm:4.28.1"],
+            ["@types/next", null],
+            ["@types/react", "npm:17.0.34"],
+            ["@types/react-dom", "npm:17.0.11"],
+            ["next", "virtual:6722c959ba35b52fd68e1b860c7656e03ce0b8c6291894bc8aab05ae124e7fcd5d0befe81623d19f8e375b3acc104ea5ed30d062ede309eb7780a31fd79f0747#npm:12.0.3"],
+            ["react", "npm:17.0.2"],
+            ["react-dom", "virtual:6722c959ba35b52fd68e1b860c7656e03ce0b8c6291894bc8aab05ae124e7fcd5d0befe81623d19f8e375b3acc104ea5ed30d062ede309eb7780a31fd79f0747#npm:17.0.2"]
+          ],
+          "packagePeers": [
+            "@types/next",
+            "@types/react-dom",
+            "@types/react",
+            "next",
             "react-dom",
             "react"
           ],
