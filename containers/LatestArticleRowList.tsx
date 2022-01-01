@@ -59,7 +59,7 @@ export default function LatestArticleRowList({
 
           return (
             <Link href={`/articles/${category}/${slug}`} key={slug} passHref>
-              <a>
+              <a title={title}>
                 <LatestArticleRow
                   title={title}
                   category={category}
