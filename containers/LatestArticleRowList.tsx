@@ -1,13 +1,12 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ComponentProps } from 'react';
 import LatestArticleRow from '../components/ArticleRow/LatestArticleRow';
-import Chip from '../components/Chip/Chip';
 import { IChipSetProps } from '../components/Chip/interface';
 import { TypoLabel } from '../components/Common/Typography';
 import { FRAME_PADDING_DEFAULT, FRAME_PADDING_MOBILE } from '../constants/paddings';
 import { styled } from '../stitches.config';
 import ArticleType from '../types/articles';
+import CategorySlider from './CategorySlider';
 
 interface ILatestArticleRowListProps {
   articles: ArticleType[];
@@ -43,14 +42,11 @@ export default function LatestArticleRowList({
         >
           최신 아티클
         </TypoLabel>
-        <Chip.Set value={filteredCategory} onChange={handleChipClick}>
-          <Chip value={null}>전체</Chip>
-          {categories.map((category) => (
-            <Chip value={category} key={category}>
-              {category}
-            </Chip>
-          ))}
-        </Chip.Set>
+        <CategorySlider
+          categories={categories}
+          selected={filteredCategory}
+          onChange={handleChipClick}
+        />
       </HeaderArea>
       <div>
         {articles.map(({ slug, date, title, category }) => (
