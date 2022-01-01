@@ -6,20 +6,17 @@ import Head from 'next/head';
 import { join } from 'path';
 import { ParsedUrlQuery } from 'querystring';
 import React, { ReactElement } from 'react';
-import ArticleCodeBlock from '../../components/Article/ArticleCodeBlock';
 import ArticleComments from '../../components/Article/ArticleComments';
 import ArticleHeader from '../../components/Article/ArticleHeader';
 import ArticleStyleWrapper from '../../components/Common/ArticleStyleWrapper';
 import ArticleLayout from '../../components/Layout/ArticleLayout';
 import {
   articlesDirectory,
-  getArticles,
-  getArticleByAbsolutePath
+  getArticleByAbsolutePath,
+  getArticles
 } from '../../lib/api';
-
-const MDXComponents = {
-  code: ArticleCodeBlock
-};
+import { MDXComponents } from '../../lib/mdxComponents';
+import imageMetadata from '../../lib/rehypeImageMetadata';
 
 interface IArticlePageProps {
   title: string;
@@ -60,7 +57,11 @@ export const getStaticProps: GetStaticProps<IArticlePageProps, GetStaticPropsPar
       'date',
       'content'
     ]);
-    const mdxSource = await serialize(article.content);
+    const mdxSource = await serialize(article.content, {
+      mdxOptions: {
+        rehypePlugins: [imageMetadata]
+      }
+    });
 
     return {
       props: {
