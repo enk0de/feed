@@ -1,6 +1,5 @@
 import Chip from '../components/Chip/Chip';
 import { IChipSetProps } from '../components/Chip/interface';
-import HorizontalScrollShadower from '../components/Common/HorizontalScrollShadower';
 
 interface ICategorySliderProps {
   categories: string[];
