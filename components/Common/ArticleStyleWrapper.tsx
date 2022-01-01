@@ -82,7 +82,7 @@ const ArticleStyleWrapper = styled('div', {
     border: 'none',
     backgroundColor: '$light1'
   },
-  ':not(pre) > :not(div) > code': {
+  ':not(pre, div) > code': {
     backgroundColor: '$light1',
     color: '$dark1',
     borderRadius: 4,
