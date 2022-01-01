@@ -14,7 +14,7 @@ draft: false
 
 **_🔍 만약..._**
 
-마법같이 각각의 컴포넌트, 서비스 단위가 각각의 빌드를 구성하고 그 빌드를 동적으로 최상단 Host 앱에서 불러와 사용할 수 있다면..? <span class="text-pink-600">**런타임에!?**</span>
+마법같이 각각의 컴포넌트, 서비스 단위가 각각의 빌드를 구성하고 그 빌드를 동적으로 최상단 Host 앱에서 불러와 사용할 수 있다면..? **런타임에!?**
 
 Webpack 5의 Module Federation은 그런 마법같은 일을 현실화할 수 있다. 🧙
 
@@ -26,9 +26,9 @@ Module Federation은 여러 분리된 빌드들이 하나의 앱을 구성할 �
 
 요즘 프론트엔드계에서 핫한 **Micro-Frontends**의 근간이 되는 기술이기도 하다.
 
-특정 빌드가 <span class="text-green-500">**Remote 앱**</span>이 되고, 그 앱에서 **다른 빌드**들을 동적으로 불러와 사용할 수 있다. Remote는 꼭 특정한 하나의 빌드만 될 수 있는 것은 아니다. Federated된 모든 빌드들이 Remote가 될 수 있다.
+특정 빌드가 **Remote 앱**이 되고, 그 앱에서 **다른 빌드**들을 동적으로 불러와 사용할 수 있다. Remote는 꼭 특정한 하나의 빌드만 될 수 있는 것은 아니다. Federated된 모든 빌드들이 Remote가 될 수 있다.
 
-즉, **<span class="text-red-600">양방향(Bidirectional)</span>**으로 Module Federation이 가능하다. 예를 들면, A 빌드에서 B 빌드에 있는 코드를 실행시킬 수 있고, B 빌드에서도 A 빌드에 있는 코드를 실행시킬 수 있다는 것이다.
+즉, **양방향(Bidirectional)**으로 Module Federation이 가능하다. 예를 들면, A 빌드에서 B 빌드에 있는 코드를 실행시킬 수 있고, B 빌드에서도 A 빌드에 있는 코드를 실행시킬 수 있다는 것이다.
 
 이론적으로는 전방향(Omnidirectional)으로도 가능하다고 한다.
 
