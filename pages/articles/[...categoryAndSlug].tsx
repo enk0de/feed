@@ -6,6 +6,7 @@ import Head from 'next/head';
 import { join } from 'path';
 import { ParsedUrlQuery } from 'querystring';
 import React, { ReactElement } from 'react';
+import ArticleCodeBlock from '../../components/Article/ArticleCodeBlock';
 import ArticleComments from '../../components/Article/ArticleComments';
 import ArticleHeader from '../../components/Article/ArticleHeader';
 import ArticleStyleWrapper from '../../components/Common/ArticleStyleWrapper';
@@ -15,6 +16,10 @@ import {
   getArticles,
   getArticleByAbsolutePath
 } from '../../lib/api';
+
+const MDXComponents = {
+  code: ArticleCodeBlock
+};
 
 interface IArticlePageProps {
   title: string;
@@ -31,7 +36,7 @@ const ArticlePage = ({ content, ...rest }: IArticlePageProps) => {
       </Head>
       <ArticleHeader {...rest} />
       <ArticleStyleWrapper>
-        <MDXRemote {...content} />
+        <MDXRemote {...content} components={MDXComponents} />
       </ArticleStyleWrapper>
       <ArticleComments />
     </>
