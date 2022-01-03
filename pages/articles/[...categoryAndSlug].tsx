@@ -17,14 +17,16 @@ import {
   getArticles
 } from '../../lib/api';
 import { MDXComponents } from '../../lib/mdxComponents';
+import { getOpenGraphImage } from '../../lib/openGraphImage';
 import imageMetadata from '../../lib/rehypeImageMetadata';
 import SEO from '../../next-seo.config';
 
 interface IArticlePageProps extends IArticle {
   content: MDXRemoteSerializeResult;
+  openGraphImage: string | null;
 }
 
-const ArticlePage = ({ content, ...rest }: IArticlePageProps) => {
+const ArticlePage = ({ content, openGraphImage, ...rest }: IArticlePageProps) => {
   return (
     <>
       <DefaultSeo
@@ -34,7 +36,14 @@ const ArticlePage = ({ content, ...rest }: IArticlePageProps) => {
         openGraph={{
           ...SEO.openGraph,
           title: rest.title,
-          description: rest.description === '' ? rest.title : rest.description
+          description: rest.description === '' ? rest.title : rest.description,
+          images: openGraphImage
+            ? [
+                {
+                  url: openGraphImage
+                }
+              ]
+            : undefined
         }}
       />
       <ArticleHeader {...rest} />
@@ -70,6 +79,9 @@ export const getStaticProps: GetStaticProps<IArticlePageProps, GetStaticPropsPar
       }
     });
 
+    const openGraphImage =
+      (await getOpenGraphImage(`/og?title=${article.title}`)) ?? null;
+
     return {
       props: {
         title: article.title,
@@ -79,7 +91,8 @@ export const getStaticProps: GetStaticProps<IArticlePageProps, GetStaticPropsPar
           'yyyy년 M월 d일'
         ),
         description: article?.description || '',
-        content: mdxSource
+        content: mdxSource,
+        openGraphImage
       }
     };
   };
