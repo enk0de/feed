@@ -1,6 +1,11 @@
 import { styled } from '../../stitches.config';
-import { TypoHeadingH1, TypoLabelLargeBaseStyleObj } from '../Common/Typography';
+import {
+  TypoHeadingH1,
+  TypoLabel,
+  TypoLabelLargeBaseStyleObj
+} from '../Common/Typography';
 import { Divider } from '../Common/Divider';
+import { getMappedCategory } from '../../utils/getMappedCategory';
 
 interface IArticleHeaderProps {
   title: string;
@@ -26,9 +31,13 @@ export default function ArticleHeader({ title, category, date }: IArticleHeaderP
         {title}
       </TypoHeadingH1>
       <DescriptionArea>
-        <DescriptionItem>{category}</DescriptionItem>
+        <TypoLabel type="large" css={{ color: '$dark3' }}>
+          {getMappedCategory(category)}
+        </TypoLabel>
         <Divider />
-        <DescriptionItem>{date}</DescriptionItem>
+        <TypoLabel type="large" css={{ color: '$dark3' }}>
+          {date}
+        </TypoLabel>
       </DescriptionArea>
     </ArticleHeaderContainer>
   );
@@ -45,9 +54,4 @@ const DescriptionArea = styled('div', {
   '> * + *': {
     marginLeft: 10
   }
-});
-
-const DescriptionItem = styled('span', {
-  color: '$dark3',
-  ...TypoLabelLargeBaseStyleObj
 });
