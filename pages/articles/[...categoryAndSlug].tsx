@@ -2,7 +2,7 @@ import { format, parse } from 'date-fns';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
-import Head from 'next/head';
+import { DefaultSeo } from 'next-seo';
 import { join } from 'path';
 import { ParsedUrlQuery } from 'querystring';
 import React, { ReactElement } from 'react';
@@ -10,6 +10,7 @@ import ArticleComments from '../../components/Article/ArticleComments';
 import ArticleHeader from '../../components/Article/ArticleHeader';
 import ArticleStyleWrapper from '../../components/Common/ArticleStyleWrapper';
 import ArticleLayout from '../../components/Layout/ArticleLayout';
+import IArticle from '../../interfaces/articles';
 import {
   articlesDirectory,
   getArticleByAbsolutePath,
@@ -17,20 +18,25 @@ import {
 } from '../../lib/api';
 import { MDXComponents } from '../../lib/mdxComponents';
 import imageMetadata from '../../lib/rehypeImageMetadata';
+import SEO from '../../next-seo.config';
 
-interface IArticlePageProps {
-  title: string;
-  category: string;
-  date: string;
+interface IArticlePageProps extends IArticle {
   content: MDXRemoteSerializeResult;
 }
 
 const ArticlePage = ({ content, ...rest }: IArticlePageProps) => {
   return (
     <>
-      <Head>
-        <title>{`${rest.title} - hoondevfeed`}</title>
-      </Head>
+      <DefaultSeo
+        {...SEO}
+        title={rest.title}
+        description={rest.description === '' ? rest.title : rest.description}
+        openGraph={{
+          ...SEO.openGraph,
+          title: rest.title,
+          description: rest.description === '' ? rest.title : rest.description
+        }}
+      />
       <ArticleHeader {...rest} />
       <ArticleStyleWrapper>
         <MDXRemote {...content} components={MDXComponents} />
@@ -55,7 +61,8 @@ export const getStaticProps: GetStaticProps<IArticlePageProps, GetStaticPropsPar
       'title',
       'category',
       'date',
-      'content'
+      'content',
+      'description'
     ]);
     const mdxSource = await serialize(article.content, {
       mdxOptions: {
@@ -71,6 +78,7 @@ export const getStaticProps: GetStaticProps<IArticlePageProps, GetStaticPropsPar
           parse(article.date, 'yyyy-MM-dd HH:mm:ss', new Date()),
           'yyyy년 M월 d일'
         ),
+        description: article?.description || '',
         content: mdxSource
       }
     };

@@ -6,12 +6,12 @@ import { IChipSetProps } from '../components/Chip/interface';
 import { TypoLabel } from '../components/Common/Typography';
 import { ARTICLE_NEW_DATE } from '../constants/date';
 import { FRAME_PADDING_DEFAULT, FRAME_PADDING_MOBILE } from '../constants/paddings';
+import { IArticleWithSlug } from '../interfaces/articles';
 import { styled } from '../stitches.config';
-import ArticleType from '../types/articles';
 import CategorySlider from './CategorySlider';
 
 interface ILatestArticleRowListProps {
-  articles: ArticleType[];
+  articles: IArticleWithSlug[];
   categories: string[];
 }
 

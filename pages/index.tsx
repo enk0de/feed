@@ -1,12 +1,12 @@
-import { GetServerSideProps, GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import { ReactElement } from 'react';
 import MainLayout from '../components/Layout/MainLayout';
 import LatestArticleRowList from '../containers/LatestArticleRowList';
+import { IArticleWithSlug } from '../interfaces/articles';
 import { getArticles, getCategories } from '../lib/api';
-import ArticleType from '../types/articles';
 
 interface IIndexProps {
-  articles: ArticleType[];
+  articles: IArticleWithSlug[];
   categories: string[];
 }
 
