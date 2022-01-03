@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "next",
+    "dev:watch-mdx": "next-remote-watch ./_articles",
     "build": "next build",
     "start": "next start",
     "lint": "next lint && yarn prettier",
@@ -45,6 +46,7 @@
     "eslint": "<8.0.0",
     "eslint-config-next": "12.0.3",
     "eslint-config-prettier": "^8.3.0",
+    "next-remote-watch": "^1.0.0",
     "prettier": "^2.4.1"
   },
   "packageManager": "yarn@3.2.0-rc.9"
