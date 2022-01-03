@@ -2,7 +2,7 @@ import { format, parse } from 'date-fns';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
-import { DefaultSeo } from 'next-seo';
+import { NextSeo } from 'next-seo';
 import { join } from 'path';
 import { ParsedUrlQuery } from 'querystring';
 import React, { ReactElement } from 'react';
@@ -29,7 +29,7 @@ interface IArticlePageProps extends IArticle {
 const ArticlePage = ({ content, openGraphImage, ...rest }: IArticlePageProps) => {
   return (
     <>
-      <DefaultSeo
+      <NextSeo
         {...SEO}
         title={rest.title}
         description={rest.description === '' ? rest.title : rest.description}
