@@ -3,7 +3,9 @@ import { styled } from '../../stitches.config';
 
 export default function MDXResponsiveImage(props: ImageProps) {
   return (
-    <ImageWrapper>
+    <ImageWrapper
+      css={{ maxWidth: `${props.width}px`, maxHeight: `${props.height}px` }}
+    >
       <Image
         {...props}
         alt={props.alt}
@@ -16,6 +18,8 @@ export default function MDXResponsiveImage(props: ImageProps) {
 }
 
 const ImageWrapper = styled('span', {
+  display: 'block',
+  margin: '0 auto',
   '*': {
     borderRadius: 10,
     transition: '0.2s'

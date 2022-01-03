@@ -9,6 +9,7 @@ type ImageNode = {
   type: 'element';
   tagName: 'img';
   properties: {
+    alt?: string;
     src: string;
     height?: number;
     width?: number;
@@ -49,8 +50,17 @@ async function addProps(node: ImageNode): Promise<void> {
 
   if (!res) throw Error(`이미지가 올바르지 않습니다. "${node.properties.src}"`);
 
-  node.properties.width = res.width;
-  node.properties.height = res.height;
+  /**
+   * alt에서 meta width와 height를 가져와 적용하는 로직
+   */
+  const alt = node.properties.alt?.replace(/ *\{[^)]*\} */g, '');
+  const metaWidth = node.properties.alt?.match(/{([^}]+)x/);
+  const metaHeight = node.properties.alt?.match(/x([^}]+)}/);
+
+  node.properties.alt = alt;
+
+  node.properties.width = metaWidth ? +metaWidth[1] : res.width;
+  node.properties.height = metaHeight ? +metaHeight[1] : res.height;
 
   node.properties.blurDataURL = blur64;
   node.properties.placeholder = 'blur';
