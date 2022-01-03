@@ -1,5 +1,6 @@
 import Chip from '../components/Chip/Chip';
 import { IChipSetProps } from '../components/Chip/interface';
+import { getMappedCategory } from '../utils/getMappedCategory';
 
 interface ICategorySliderProps {
   categories: string[];
@@ -17,7 +18,7 @@ export default function CategorySlider({
       <Chip value={null}>전체</Chip>
       {categories.map((category) => (
         <Chip value={category} key={category}>
-          {category}
+          {getMappedCategory(category)}
         </Chip>
       ))}
     </Chip.Set>

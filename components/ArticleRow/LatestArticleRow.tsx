@@ -6,6 +6,7 @@ import {
   TypoLabelLargeBaseStyleObj
 } from '../Common/Typography';
 import { Divider } from '../Common/Divider';
+import { getMappedCategory } from '../../utils/getMappedCategory';
 
 interface ILatestArticleRowProps {
   category: string;
@@ -24,7 +25,7 @@ export default function LatestArticleRow({
     <LatestArticleRowContainer>
       <DescriptionArea>
         <TypoLabel type="large" css={{ color: '$dark3' }}>
-          {category}
+          {getMappedCategory(category)}
         </TypoLabel>
         <Divider />
         <TypoLabel type="large" css={{ color: '$dark3' }}>

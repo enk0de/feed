@@ -7,6 +7,8 @@ export const articlesDirectory = join(process.cwd(), '_articles');
 
 export function getArticleByAbsolutePath(path: string, fields: string[] = []) {
   const realSlug = basename(path).replace(/\.mdx$/, '');
+  const category = basename(join(path, '..'));
+
   const fileContents = fs.readFileSync(path, 'utf8');
   const { data, content } = matter(fileContents);
 
@@ -23,6 +25,8 @@ export function getArticleByAbsolutePath(path: string, fields: string[] = []) {
       items[field] = data[field];
     }
   });
+
+  items.category = category;
 
   return items;
 }
@@ -41,7 +45,7 @@ export function getArticles(fields: string[] = [], category?: string) {
   // const slugs = getArticleSlugs();
   const paths = getAbsoluteArticles(articlesDirectory, category);
   const articles = paths
-    .map((slug) => getArticleByAbsolutePath(slug, fields))
+    .map((path) => getArticleByAbsolutePath(path, fields))
     // sort articles by date in descending order
     .sort((article1, article2) => (article1.date > article2.date ? -1 : 1));
   return articles;
