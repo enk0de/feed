@@ -13,7 +13,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
 
   const staticPaths = getStaticSitemap();
   const dynamicPaths = articles.map((article) => {
-    return `${BASE_URL}/${article.category}/${article.slug}`;
+    return `${BASE_URL}/articles/${article.category}/${article.slug}`;
   });
 
   const allPaths = [...staticPaths, ...dynamicPaths];
