@@ -16,6 +16,7 @@ import {
   getArticleByAbsolutePath,
   getArticles
 } from '../../lib/api';
+import { MDXComponents } from '../../lib/mdxComponents';
 import { getOpenGraphImage } from '../../lib/openGraphImage';
 import imageMetadata from '../../lib/rehypeImageMetadata';
 import SEO from '../../next-seo.config';
@@ -47,7 +48,7 @@ const ArticlePage = ({ content, openGraphImage, ...rest }: IArticlePageProps) =>
       />
       <ArticleHeader {...rest} />
       <ArticleStyleWrapper>
-        <MDXRemote {...content} />
+        <MDXRemote {...content} components={MDXComponents} />
       </ArticleStyleWrapper>
       <ArticleComments />
     </>
