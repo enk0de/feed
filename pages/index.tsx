@@ -1,4 +1,3 @@
-import { styled } from '@stitches/react';
 import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import React, { ReactElement } from 'react';
@@ -10,6 +9,7 @@ import CategorySlider from '../containers/CategorySlider';
 import LatestArticleRowList from '../containers/LatestArticleRowList';
 import { IArticleWithSlug } from '../interfaces/articles';
 import { getArticles, getCategories } from '../lib/api';
+import { styled } from '../stitches.config';
 
 interface IIndexProps {
   articles: IArticleWithSlug[];
@@ -76,6 +76,9 @@ const LatestArticleRowListContainer = styled('section', {
   padding: `12px ${FRAME_PADDING_MOBILE}px 36px`,
   margin: '0 auto',
   maxWidth: '1140px',
+  '@bp2': {
+    padding: `12px ${FRAME_PADDING_DEFAULT}px 36px`
+  },
   boxSizing: 'border-box'
 });
 
