@@ -29,7 +29,7 @@ const Index = ({ articles, categories }: IIndexProps) => {
 
   return (
     <LatestArticleRowListContainer>
-      <HeaderArea>
+      <HeaderArea css={{ marginBottom: 12 }}>
         <TypoLabel
           type="large"
           css={{
