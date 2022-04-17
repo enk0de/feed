@@ -16,7 +16,6 @@ import {
   getArticleByAbsolutePath,
   getArticles
 } from '../../lib/api';
-import { MDXComponents } from '../../lib/mdxComponents';
 import { getOpenGraphImage } from '../../lib/openGraphImage';
 import imageMetadata from '../../lib/rehypeImageMetadata';
 import SEO from '../../next-seo.config';
@@ -48,7 +47,7 @@ const ArticlePage = ({ content, openGraphImage, ...rest }: IArticlePageProps) =>
       />
       <ArticleHeader {...rest} />
       <ArticleStyleWrapper>
-        <MDXRemote {...content} components={MDXComponents} />
+        <MDXRemote {...content} />
       </ArticleStyleWrapper>
       <ArticleComments />
     </>
@@ -61,41 +60,43 @@ ArticlePage.getLayout = function (page: ReactElement) {
 
 type GetStaticPropsParams = ParsedUrlQuery & { categoryAndSlug: string[] };
 
-export const getStaticProps: GetStaticProps<IArticlePageProps, GetStaticPropsParams> =
-  async ({ params }) => {
-    const [category, slug] = params!.categoryAndSlug;
-    const path = join(articlesDirectory, category, `${slug}.mdx`);
+export const getStaticProps: GetStaticProps<
+  IArticlePageProps,
+  GetStaticPropsParams
+> = async ({ params }) => {
+  const [category, slug] = params!.categoryAndSlug;
+  const path = join(articlesDirectory, category, `${slug}.mdx`);
 
-    const article = getArticleByAbsolutePath(path, [
-      'title',
-      'category',
-      'date',
-      'content',
-      'description'
-    ]);
-    const mdxSource = await serialize(article.content, {
-      mdxOptions: {
-        rehypePlugins: [imageMetadata]
-      }
-    });
+  const article = getArticleByAbsolutePath(path, [
+    'title',
+    'category',
+    'date',
+    'content',
+    'description'
+  ]);
+  const mdxSource = await serialize(article.content, {
+    mdxOptions: {
+      rehypePlugins: [imageMetadata]
+    }
+  });
 
-    const openGraphImage =
-      (await getOpenGraphImage(`/og?title=${article.title}`)) ?? null;
+  const openGraphImage =
+    (await getOpenGraphImage(`/og?title=${article.title}`)) ?? null;
 
-    return {
-      props: {
-        title: article.title,
-        category: article.category,
-        date: format(
-          parse(article.date, 'yyyy-MM-dd HH:mm:ss', new Date()),
-          'yyyy년 M월 d일'
-        ),
-        description: article?.description || '',
-        content: mdxSource,
-        openGraphImage
-      }
-    };
+  return {
+    props: {
+      title: article.title,
+      category: article.category,
+      date: format(
+        parse(article.date, 'yyyy-MM-dd HH:mm:ss', new Date()),
+        'yyyy년 M월 d일'
+      ),
+      description: article?.description || '',
+      content: mdxSource,
+      openGraphImage
+    }
   };
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articles = getArticles(['category', 'slug', 'date']);
