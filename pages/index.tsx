@@ -28,28 +28,30 @@ const Index = ({ articles, categories }: IIndexProps) => {
   };
 
   return (
-    <LatestArticleRowListContainer>
-      <HeaderArea css={{ marginBottom: 12 }}>
-        <TypoLabel
-          type="large"
-          css={{
-            color: '$dark2',
-            display: 'none',
-            '@bp2': {
-              display: 'revert'
-            }
-          }}
-        >
-          최신 아티클
-        </TypoLabel>
-        <CategorySlider
-          categories={categories}
-          selected={filteredCategory}
-          onChange={handleChipClick}
-        />
-      </HeaderArea>
-      <LatestArticleRowList articles={articles} />
-    </LatestArticleRowListContainer>
+    <>
+      <LatestArticleRowListContainer>
+        <HeaderArea css={{ marginBottom: 12 }}>
+          <TypoLabel
+            type="large"
+            css={{
+              color: '$dark2',
+              display: 'none',
+              '@bp2': {
+                display: 'revert'
+              }
+            }}
+          >
+            최신 아티클
+          </TypoLabel>
+          <CategorySlider
+            categories={categories}
+            selected={filteredCategory}
+            onChange={handleChipClick}
+          />
+        </HeaderArea>
+        <LatestArticleRowList articles={articles} />
+      </LatestArticleRowListContainer>
+    </>
   );
 };
 
@@ -74,9 +76,6 @@ const LatestArticleRowListContainer = styled('section', {
   padding: `12px ${FRAME_PADDING_MOBILE}px 36px`,
   margin: '0 auto',
   maxWidth: '1140px',
-  '@bp2': {
-    padding: `12px ${FRAME_PADDING_DEFAULT}px 36px`
-  },
   boxSizing: 'border-box'
 });
 
