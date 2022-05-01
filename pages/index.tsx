@@ -16,7 +16,7 @@ interface IIndexProps {
   categories: string[];
 }
 
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 10;
 
 const Index = ({}: IIndexProps) => {
   const router = useRouter();
