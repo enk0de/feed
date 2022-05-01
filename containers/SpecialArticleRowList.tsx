@@ -1,9 +1,15 @@
 import SpecialArticleRow from '../components/ArticleRow/SpecialArticleRow';
-import { styled } from '../stitches.config';
+import HorizontalScrollShadower from '../components/Common/HorizontalScrollShadower';
 
-export default function SpecialArticleRowList() {
+const SpecialArticleRowList = () => {
   return (
-    <SpecialArticleRowListContainer>
+    <HorizontalScrollShadower
+      as="section"
+      scrollAreaStyle={{
+        display: 'flex',
+        spaceX: 12
+      }}
+    >
       <SpecialArticleRow>
         <SpecialArticleRow.Image src="/assets/lol.jpeg" alt="롤" />
         <SpecialArticleRow.Title>{`롤 중독자\n임지훈`}</SpecialArticleRow.Title>
@@ -20,10 +26,12 @@ export default function SpecialArticleRowList() {
         <SpecialArticleRow.Image src="/assets/toss.jpeg" alt="토스" />
         <SpecialArticleRow.Title>{`토스\n토스토스`}</SpecialArticleRow.Title>
       </SpecialArticleRow>
-    </SpecialArticleRowListContainer>
+      <SpecialArticleRow>
+        <SpecialArticleRow.Image src="/assets/toss.jpeg" alt="토스" />
+        <SpecialArticleRow.Title>{`토스\n토스토스`}</SpecialArticleRow.Title>
+      </SpecialArticleRow>
+    </HorizontalScrollShadower>
   );
-}
+};
 
-const SpecialArticleRowListContainer = styled('section', {
-  position: 'relative'
-});
+export default SpecialArticleRowList;
