@@ -10,7 +10,7 @@ interface ILatestArticleRowListProps {
 
 export default function LatestArticleRowList({ articles }: ILatestArticleRowListProps) {
   return (
-    <>
+    <div>
       {articles.map(({ slug, date, title, category }) => {
         const parsedDate = parse(date, 'yyyy-MM-dd HH:mm:ss', new Date());
         const formattedDate = format(parsedDate, 'yyyy년 M월 d일');
@@ -30,6 +30,6 @@ export default function LatestArticleRowList({ articles }: ILatestArticleRowList
           </Link>
         );
       })}
-    </>
+    </div>
   );
 }

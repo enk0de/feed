@@ -1,12 +1,12 @@
 import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import React, { ReactElement } from 'react';
+import { dehydrate, QueryClient } from 'react-query';
 import { IChipSetProps } from '../components/Chip/interface';
-import { TypoLabel } from '../components/Common/Typography';
 import MainLayout from '../components/Layout/MainLayout';
 import { FRAME_PADDING_DEFAULT, FRAME_PADDING_MOBILE } from '../constants/paddings';
-import CategorySlider from '../containers/CategorySlider';
 import LatestArticleRowList from '../containers/LatestArticleRowList';
+import { useInfiniteArticles } from '../hooks/useInfiniteArticles';
 import { IArticleWithSlug } from '../interfaces/articles';
 import { getArticles, getCategories } from '../lib/api';
 import { styled } from '../stitches.config';
@@ -16,9 +16,20 @@ interface IIndexProps {
   categories: string[];
 }
 
-const Index = ({ articles, categories }: IIndexProps) => {
+const PAGE_SIZE = 5;
+
+const Index = ({}: IIndexProps) => {
   const router = useRouter();
-  const filteredCategory = (router.query?.category as string) ?? null;
+  // const filteredCategory = (router.query?.category as string) ?? null;
+
+  const {
+    data: { pages } = {},
+    fetchNextPage,
+    hasNextPage
+  } = useInfiniteArticles({
+    pageSize: PAGE_SIZE
+  });
+
   const handleChipClick: IChipSetProps<string>['onChange'] = ({ value }) => {
     if (value == null) {
       router.push(router.basePath);
@@ -28,9 +39,28 @@ const Index = ({ articles, categories }: IIndexProps) => {
   };
 
   return (
-    <>
-      <LatestArticleRowListContainer>
-        <HeaderArea css={{ marginBottom: 12 }}>
+    <Container>
+      <>
+        {/* <HeaderArea
+          css={{
+            marginBottom: 24,
+            display: 'none',
+            '@bp2': {
+              display: 'revert'
+            }
+          }}
+        >
+          <TypoLabel
+            type="large"
+            css={{
+              color: '$dark2'
+            }}
+          >
+            기획 아티클
+          </TypoLabel>
+        </HeaderArea>
+        <SpecialArticleRowList /> */}
+        {/* <HeaderArea css={{ marginBottom: 12 }}>
           <TypoLabel
             type="large"
             css={{
@@ -48,10 +78,20 @@ const Index = ({ articles, categories }: IIndexProps) => {
             selected={filteredCategory}
             onChange={handleChipClick}
           />
-        </HeaderArea>
-        <LatestArticleRowList articles={articles} />
-      </LatestArticleRowListContainer>
-    </>
+        </HeaderArea> */}
+        <LatestArticleRowList
+          articles={
+            pages?.map((i) => i.page).reduce((acc = [], cur) => [...acc, ...cur], []) ??
+            []
+          }
+        />
+        {hasNextPage ? (
+          <MoreButtonWrapper>
+            <MoreButton onClick={() => fetchNextPage()}>글 더 불러오기</MoreButton>
+          </MoreButtonWrapper>
+        ) : null}
+      </>
+    </Container>
   );
 };
 
@@ -60,19 +100,43 @@ Index.getLayout = function (page: ReactElement) {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const articles = getArticles(['date', 'slug', 'title', 'category']);
+  const queryClient = new QueryClient();
+
+  const allArticles = getArticles([
+    'date',
+    'slug',
+    'title',
+    'category'
+  ]) as IArticleWithSlug[];
+
+  const allPageLength = Math.ceil(allArticles.length / PAGE_SIZE);
+
+  await queryClient.prefetchInfiniteQuery(
+    useInfiniteArticles.queryKey,
+    ({ pageParam: pageNum = 0 }) => ({
+      page: allArticles.slice(pageNum * PAGE_SIZE, pageNum * PAGE_SIZE + PAGE_SIZE),
+      pageNum,
+      isLast: pageNum + 1 === allPageLength
+    }),
+    {
+      getNextPageParam: (last) => (last.isLast ? undefined : last.pageNum + 1)
+    }
+  );
 
   const categories = getCategories();
+  const dehydratedState = dehydrate(queryClient);
 
   return {
-    props: { articles, categories }
+    props: {
+      dehydratedState: JSON.parse(JSON.stringify(dehydratedState)),
+      categories
+    }
   };
 };
 
 export default Index;
 
-const LatestArticleRowListContainer = styled('section', {
-  spaceY: 12,
+const Container = styled('section', {
   padding: `12px ${FRAME_PADDING_MOBILE}px 36px`,
   margin: '0 auto',
   maxWidth: '1140px',
@@ -82,8 +146,29 @@ const LatestArticleRowListContainer = styled('section', {
   boxSizing: 'border-box'
 });
 
-const HeaderArea = styled('div', {
+// const HeaderArea = styled('div', {
+//   display: 'flex',
+//   alignItems: 'center',
+//   justifyContent: 'space-between'
+// });
+
+const MoreButtonWrapper = styled('div', {
   display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between'
+  justifyContent: 'center',
+  marginTop: '24px'
+});
+
+const MoreButton = styled('button', {
+  background: '$light2',
+  padding: '12px 20px',
+  borderRadius: '100px',
+  color: '$dark2',
+  fontWeight: '500',
+  transition: '0.2s ease-in-out',
+  '&:hover': {
+    background: '$light1'
+  },
+  '&:focus': {
+    boxShadow: 'rgba(0,0,0,.1) 0 0 0 2px'
+  }
 });

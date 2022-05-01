@@ -44,7 +44,10 @@ export default function ArticleHeader({ title, category, date }: IArticleHeaderP
 }
 
 const ArticleHeaderContainer = styled('div', {
-  marginBottom: '40px'
+  marginBottom: '40px',
+  '@bp2': {
+    marginTop: 20
+  }
 });
 
 const DescriptionArea = styled('div', {

@@ -18,10 +18,7 @@ export default function MainLayout({ children }: IMainLayoutProps) {
 }
 
 const MainLayoutContentsWrapper = styled('main', {
-  marginTop: 64,
-  '@bp2': {
-    marginTop: 80
-  }
+  marginTop: 64
 });
 
 const Contents = styled('div', {

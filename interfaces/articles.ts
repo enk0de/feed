@@ -8,3 +8,9 @@ export default interface IArticle {
 export interface IArticleWithSlug extends IArticle {
   slug: string;
 }
+
+export interface ArticlesResponse {
+  page: IArticleWithSlug[];
+  pageNum: number;
+  isLast: boolean;
+}

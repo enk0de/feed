@@ -2,7 +2,9 @@ import type { NextPage } from 'next';
 import { DefaultSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-import { ReactElement, ReactNode, useEffect } from 'react';
+import { ReactElement, ReactNode, useEffect, useState } from 'react';
+import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import * as gtag from '../lib/gtag';
 import SEO from '../next-seo.config';
 import { globalStyles } from '../stitches.config';
@@ -17,6 +19,7 @@ type AppPropsWithLayout = AppProps & {
 };
 
 export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const [queryClient] = useState(() => new QueryClient());
   const getLayout = Component.getLayout ?? ((page) => page);
   const router = useRouter();
 
@@ -35,7 +38,12 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <>
       <DefaultSeo {...SEO} />
-      {getLayout(<Component {...pageProps} />)}
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <Hydrate state={pageProps.dehydratedState}>
+          {getLayout(<Component {...pageProps} />)}
+        </Hydrate>
+      </QueryClientProvider>
     </>
   );
 }
