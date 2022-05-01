@@ -119,7 +119,8 @@ export const getStaticProps: GetStaticProps = async () => {
       isLast: pageNum + 1 === allPageLength
     }),
     {
-      getNextPageParam: (last) => (last.isLast ? undefined : last.pageNum + 1)
+      getNextPageParam: (last) => (last.isLast ? undefined : last.pageNum + 1),
+      staleTime: 5 * 60 * 1000
     }
   );
 

@@ -5,7 +5,7 @@ import { ArticlesResponse } from '../interfaces/articles';
 export const useInfiniteArticles = ({ pageSize }: { pageSize: number }) => {
   return useInfiniteQuery<ArticlesResponse>(
     useInfiniteArticles.queryKey,
-    ({ pageParam = 0 }) => fetcher(pageParam, pageSize),
+    ({ pageParam }) => fetcher(pageParam ?? 0, pageSize),
     {
       refetchOnWindowFocus: false,
       getNextPageParam: (last) => (last.isLast ? undefined : last.pageNum + 1),
