@@ -4,18 +4,20 @@ import { getMappedCategory } from '../utils/getMappedCategory';
 
 interface ICategorySliderProps {
   categories: string[];
-  selected: string;
+  selected?: string;
   onChange: IChipSetProps<string>['onChange'];
+  withoutAll?: boolean;
 }
 
 export default function CategorySlider({
   categories,
   selected,
-  onChange
+  onChange,
+  withoutAll
 }: ICategorySliderProps) {
   return (
     <Chip.Set value={selected} onChange={onChange}>
-      <Chip value={null}>전체</Chip>
+      {!withoutAll ? <Chip value={null}>전체</Chip> : null}
       {categories.map((category) => (
         <Chip value={category} key={category}>
           {getMappedCategory(category)}

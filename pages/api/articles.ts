@@ -3,13 +3,6 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { IArticleWithSlug } from '../../interfaces/articles';
 import { getArticles } from '../../lib/api';
 
-const allArticles = getArticles([
-  'date',
-  'slug',
-  'title',
-  'category'
-]) as IArticleWithSlug[];
-
 //page: number, pageSize: number
 export default function articles(
   req: NextApiRequest,
@@ -23,6 +16,13 @@ export default function articles(
 
   const pageNum = Number(query.pageNum);
   const pageSize = Number(query.pageSize);
+
+  const category = query.category as string;
+
+  const allArticles = getArticles(
+    ['date', 'slug', 'title', 'category'],
+    category
+  ) as IArticleWithSlug[];
 
   const allPageLength = Math.ceil(allArticles.length / pageSize);
 

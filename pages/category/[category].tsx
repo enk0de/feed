@@ -1,36 +1,37 @@
-import { GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import React, { ReactElement } from 'react';
 import { dehydrate, QueryClient } from 'react-query';
-import { IChipSetProps } from '../components/Chip/interface';
-import { TypoLabel } from '../components/Common/Typography';
-import MainLayout from '../components/Layout/MainLayout';
-import { FRAME_PADDING_DEFAULT, FRAME_PADDING_MOBILE } from '../constants/paddings';
-import CategorySlider from '../containers/CategorySlider';
-import LatestArticleRowList from '../containers/LatestArticleRowList';
-import SpecialArticleRowList from '../containers/SpecialArticleRowList';
-import { useInfiniteArticles } from '../hooks/useInfiniteArticles';
-import { IArticleWithSlug } from '../interfaces/articles';
-import { getArticles, getCategories } from '../lib/api';
-import { styled } from '../stitches.config';
+import { IChipSetProps } from '../../components/Chip/interface';
+import { TypoHeadingH1, TypoHeadingH2 } from '../../components/Common/Typography';
+import MainLayout from '../../components/Layout/MainLayout';
+import categoryMap from '../../constants/categoryMap';
+import { FRAME_PADDING_DEFAULT, FRAME_PADDING_MOBILE } from '../../constants/paddings';
+import CategorySlider from '../../containers/CategorySlider';
+import LatestArticleRowList from '../../containers/LatestArticleRowList';
+import { useInfiniteArticles } from '../../hooks/useInfiniteArticles';
+import { IArticleWithSlug } from '../../interfaces/articles';
+import { getArticles, getCategories } from '../../lib/api';
+import { styled } from '../../stitches.config';
 
 interface IIndexProps {
   articles: IArticleWithSlug[];
+  category: keyof typeof categoryMap;
   categories: string[];
 }
 
 const PAGE_SIZE = 10;
 
-const Index = ({ categories }: IIndexProps) => {
+const Index = ({ category, categories }: IIndexProps) => {
   const router = useRouter();
-  // const filteredCategory = (router.query?.category as string) ?? null;
 
   const {
     data: { pages } = {},
     fetchNextPage,
     hasNextPage
   } = useInfiniteArticles({
-    pageSize: PAGE_SIZE
+    pageSize: PAGE_SIZE,
+    category
   });
 
   const handleChipClick: IChipSetProps<string>['onChange'] = ({ value }) => {
@@ -44,38 +45,16 @@ const Index = ({ categories }: IIndexProps) => {
   return (
     <Container>
       <>
-        <HeaderArea css={{ '@bp2': { marginBottom: 24 } }}>
-          <TypoLabel
-            type="large"
-            css={{
-              color: '$dark2',
-              display: 'none',
-              '@bp2': { display: 'revert' }
-            }}
-          >
-            기획 아티클
-          </TypoLabel>
-        </HeaderArea>
-        <SpecialArticleRowList />
-        <HeaderArea
-          css={{ marginBottom: 12, '@bp2': { marginTop: 48 }, marginTop: 36 }}
-        >
-          <TypoLabel
-            type="large"
-            css={{
-              color: '$dark2',
-              display: 'none',
-              '@bp2': { display: 'revert' }
-            }}
-          >
-            최신 아티클
-          </TypoLabel>
+        <TypoHeadingH2 css={{ textAlign: 'center', padding: '20px 0' }}>
+          {categoryMap[category]}
+        </TypoHeadingH2>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 24 }}>
           <CategorySlider
             categories={categories}
             onChange={handleChipClick}
             withoutAll
           />
-        </HeaderArea>
+        </div>
         <LatestArticleRowList
           articles={
             pages?.map((i) => i.page).reduce((acc = [], cur) => [...acc, ...cur], []) ??
@@ -96,20 +75,29 @@ Index.getLayout = function (page: ReactElement) {
   return <MainLayout>{page}</MainLayout>;
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const categories = await getCategories();
+  return {
+    paths: categories.map((category) => ({
+      params: { category }
+    })),
+    fallback: false
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const category = params!.category as string;
   const queryClient = new QueryClient();
 
-  const allArticles = getArticles([
-    'date',
-    'slug',
-    'title',
-    'category'
-  ]) as IArticleWithSlug[];
+  const allArticles = getArticles(
+    ['date', 'slug', 'title', 'category'],
+    category
+  ) as IArticleWithSlug[];
 
   const allPageLength = Math.ceil(allArticles.length / PAGE_SIZE);
 
   await queryClient.prefetchInfiniteQuery(
-    useInfiniteArticles.queryKey,
+    [useInfiniteArticles.queryKey, category],
     ({ pageParam: pageNum = 0 }) => ({
       page: allArticles.slice(pageNum * PAGE_SIZE, pageNum * PAGE_SIZE + PAGE_SIZE),
       pageNum,
@@ -127,6 +115,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       dehydratedState: JSON.parse(JSON.stringify(dehydratedState)),
+      category,
       categories
     }
   };

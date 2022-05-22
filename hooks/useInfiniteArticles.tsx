@@ -2,9 +2,15 @@ import axios from 'axios';
 import { useInfiniteQuery } from 'react-query';
 import { ArticlesResponse } from '../interfaces/articles';
 
-export const useInfiniteArticles = ({ pageSize }: { pageSize: number }) => {
+export const useInfiniteArticles = ({
+  pageSize,
+  category
+}: {
+  pageSize: number;
+  category?: string;
+}) => {
   return useInfiniteQuery<ArticlesResponse>(
-    useInfiniteArticles.queryKey,
+    category ? [useInfiniteArticles.queryKey, category] : useInfiniteArticles.queryKey,
     ({ pageParam }) => fetcher(pageParam ?? 0, pageSize),
     {
       refetchOnWindowFocus: false,
@@ -14,9 +20,14 @@ export const useInfiniteArticles = ({ pageSize }: { pageSize: number }) => {
   );
 };
 
-async function fetcher(pageNum: number, pageSize: number) {
-  return (await axios.get(`/api/articles?pageNum=${pageNum}&pageSize=${pageSize}`))
-    .data;
+async function fetcher(pageNum: number, pageSize: number, category?: string) {
+  return (
+    await axios.get(
+      `/api/articles?pageNum=${pageNum}&pageSize=${pageSize}${
+        category ? `&category=${category}` : ''
+      }`
+    )
+  ).data;
 }
 
 useInfiniteArticles.fetcher = fetcher;
