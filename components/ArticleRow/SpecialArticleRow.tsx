@@ -35,7 +35,7 @@ const SpecialArticleRowContainer = styled('article', {
   position: 'relative',
   boxSizing: 'border-box',
   overflow: 'hidden',
-  '@bp2': {
+  '@bp1': {
     width: 250,
     height: 150
   },

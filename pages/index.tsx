@@ -3,9 +3,12 @@ import { useRouter } from 'next/router';
 import React, { ReactElement } from 'react';
 import { dehydrate, QueryClient } from 'react-query';
 import { IChipSetProps } from '../components/Chip/interface';
+import { TypoLabel } from '../components/Common/Typography';
 import MainLayout from '../components/Layout/MainLayout';
 import { FRAME_PADDING_DEFAULT, FRAME_PADDING_MOBILE } from '../constants/paddings';
+import CategorySlider from '../containers/CategorySlider';
 import LatestArticleRowList from '../containers/LatestArticleRowList';
+import SpecialArticleRowList from '../containers/SpecialArticleRowList';
 import { useInfiniteArticles } from '../hooks/useInfiniteArticles';
 import { IArticleWithSlug } from '../interfaces/articles';
 import { getArticles, getCategories } from '../lib/api';
@@ -41,13 +44,9 @@ const Index = ({}: IIndexProps) => {
   return (
     <Container>
       <>
-        {/* <HeaderArea
+        <HeaderArea
           css={{
-            marginBottom: 24,
-            display: 'none',
-            '@bp2': {
-              display: 'revert'
-            }
+            marginBottom: 24
           }}
         >
           <TypoLabel
@@ -59,26 +58,24 @@ const Index = ({}: IIndexProps) => {
             기획 아티클
           </TypoLabel>
         </HeaderArea>
-        <SpecialArticleRowList /> */}
-        {/* <HeaderArea css={{ marginBottom: 12 }}>
+        <SpecialArticleRowList />
+        <HeaderArea
+          css={{ marginBottom: 12, '@bp2': { marginTop: 48 }, marginTop: 36 }}
+        >
           <TypoLabel
             type="large"
             css={{
-              color: '$dark2',
-              display: 'none',
-              '@bp2': {
-                display: 'revert'
-              }
+              color: '$dark2'
             }}
           >
             최신 아티클
           </TypoLabel>
-          <CategorySlider
+          {/* <CategorySlider
             categories={categories}
             selected={filteredCategory}
             onChange={handleChipClick}
-          />
-        </HeaderArea> */}
+          /> */}
+        </HeaderArea>
         <LatestArticleRowList
           articles={
             pages?.map((i) => i.page).reduce((acc = [], cur) => [...acc, ...cur], []) ??
@@ -147,11 +144,11 @@ const Container = styled('section', {
   boxSizing: 'border-box'
 });
 
-// const HeaderArea = styled('div', {
-//   display: 'flex',
-//   alignItems: 'center',
-//   justifyContent: 'space-between'
-// });
+const HeaderArea = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between'
+});
 
 const MoreButtonWrapper = styled('div', {
   display: 'flex',
