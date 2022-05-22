@@ -6,7 +6,7 @@ export default function SpecialArticleRowImage({
   ...rest
 }: { alt: string } & ImageProps) {
   return (
-    <SpecialArticleRowImageContainer>
+    <SpecialArticleRowImageContainer className="special-article-row-img">
       <figure style={{ position: 'relative', width: '100%', height: '100%' }}>
         <Image {...rest} alt={alt} layout="fill" objectFit="cover" priority />
       </figure>
@@ -21,5 +21,8 @@ const SpecialArticleRowImageContainer = styled('div', {
   left: 0,
   right: 0,
   borderRadius: 15,
-  overflow: 'hidden'
+  overflow: 'hidden',
+  transitionProperty: 'transform',
+  transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+  transitionDuration: '500ms'
 });

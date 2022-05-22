@@ -14,7 +14,7 @@ export default function SpecialArticleRow({
 }: ISpecialArticleRowProps) {
   return (
     <a style={{ cursor: empty ? 'default' : 'pointer' }}>
-      <SpecialArticleRowContainer empty={!!empty}>
+      <SpecialArticleRowContainer>
         {empty ? <SpecialArticleRowEmpty /> : children}
       </SpecialArticleRowContainer>
     </a>
@@ -29,27 +29,19 @@ const SpecialArticleRowEmpty = styled('article', {
 });
 
 const SpecialArticleRowContainer = styled('article', {
-  width: 250,
-  height: 150,
+  width: 190,
+  height: 120,
   borderRadius: 15,
   position: 'relative',
-  transitionProperty: 'transform,box-shadow',
-  transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
-  transitionDuration: '200ms',
   boxSizing: 'border-box',
-  variants: {
-    empty: {
-      false: {
-        '&:hover': {
-          boxShadow: 'rgba(0,0,0,.2) 0 0 0 4px'
-        },
-        '@bp2': {
-          '&:hover': {
-            transform: 'translateY(-5px)',
-            boxShadow: '$lightEl6'
-          }
-        }
-      }
+  overflow: 'hidden',
+  '@bp2': {
+    width: 250,
+    height: 150
+  },
+  '&:hover': {
+    '.special-article-row-img': {
+      transform: 'scale(1.1)'
     }
   }
 });
