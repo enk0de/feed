@@ -11,7 +11,7 @@ export const useInfiniteArticles = ({
 }) => {
   return useInfiniteQuery<ArticlesResponse>(
     category ? [useInfiniteArticles.queryKey, category] : useInfiniteArticles.queryKey,
-    ({ pageParam }) => fetcher(pageParam ?? 0, pageSize),
+    ({ pageParam }) => fetcher(pageParam ?? 0, pageSize, category),
     {
       refetchOnWindowFocus: false,
       getNextPageParam: (last) => (last.isLast ? undefined : last.pageNum + 1),
