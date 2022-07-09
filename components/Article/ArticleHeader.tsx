@@ -6,6 +6,7 @@ import {
 } from '../Common/Typography';
 import { Divider } from '../Common/Divider';
 import { getMappedCategory } from '../../utils/getMappedCategory';
+import Link from 'next/link';
 
 interface IArticleHeaderProps {
   title: string;
@@ -31,9 +32,21 @@ export default function ArticleHeader({ title, category, date }: IArticleHeaderP
         {title}
       </TypoHeadingH1>
       <DescriptionArea>
-        <TypoLabel type="large" css={{ color: '$dark3' }}>
-          {getMappedCategory(category)}
-        </TypoLabel>
+        <Link href={`/category/${category}`}>
+          <a>
+            <TypoLabel
+              type="large"
+              css={{
+                color: '$dark3',
+                '&:hover': {
+                  textDecoration: 'underline'
+                }
+              }}
+            >
+              {getMappedCategory(category)}
+            </TypoLabel>
+          </a>
+        </Link>
         <Divider />
         <TypoLabel type="large" css={{ color: '$dark3' }}>
           {date}
