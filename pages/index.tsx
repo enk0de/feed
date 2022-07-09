@@ -44,7 +44,7 @@ const Index = ({ categories }: IIndexProps) => {
   return (
     <Container>
       <>
-        <HeaderArea css={{ '@bp2': { marginBottom: 24 } }}>
+        {/* <HeaderArea css={{ '@bp2': { marginBottom: 24 } }}>
           <TypoLabel
             type="large"
             css={{
@@ -56,9 +56,10 @@ const Index = ({ categories }: IIndexProps) => {
             기획 아티클
           </TypoLabel>
         </HeaderArea>
-        <SpecialArticleRowList />
+        <SpecialArticleRowList /> */}
         <HeaderArea
-          css={{ marginBottom: 12, '@bp2': { marginTop: 48 }, marginTop: 36 }}
+          // css={{ marginBottom: 12, '@bp2': { marginTop: 48 }, marginTop: 36 }}
+          css={{ marginBottom: 12 }}
         >
           <TypoLabel
             type="large"
